@@ -4,7 +4,7 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ $saName }}
+  name: {{ $saName | default .Chart.Name }}
   {{- if or .Values.commonLabels .Values.serviceAccount.labels }}
   labels:
     {{- if .Values.commonLabels }}

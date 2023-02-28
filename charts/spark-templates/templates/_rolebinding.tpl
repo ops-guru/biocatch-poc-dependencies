@@ -26,7 +26,7 @@ metadata:
   {{- end }}
 subjects:
 - kind: ServiceAccount
-  name: {{ $saName }}
+  name: {{ $saName | default .Chart.Name }}
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role

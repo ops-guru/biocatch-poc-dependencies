@@ -4,7 +4,7 @@ from airflow.providers.cncf.kubernetes.sensors.spark_kubernetes import SparkKube
 from datetime import datetime, timedelta
 from airflow.utils.dates import days_ago
 now = datetime.now()
-sparkAppName="poc-airflow-pod-operator"
+
 default_args = {
     "owner": "k8s-kubectl",
     "depends_on_past": False,
@@ -23,7 +23,6 @@ dag = DAG(
 )
 start_pod = KubernetesPodOperator(
     task_id="deploy_helm_pod",
-    name=sparkAppName,
     namespace="operators",
     image="alpine/helm",
     cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/charts/ && helm dependency update poc && helm upgrade -i {{ dag_run.conf["sparkAppName"] }} poc/spark-application -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/temp/values.yaml --set-string name={{ dag_run.conf["sparkAppName"] }} --wait'],

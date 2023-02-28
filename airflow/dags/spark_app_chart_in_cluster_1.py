@@ -26,7 +26,7 @@ start_pod = KubernetesPodOperator(
     name=sparkAppName,
     namespace="operators",
     image="alpine/helm",
-    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/charts/ && helm dependency update poc && helm install -g poc/spark-application -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/temp/values.yaml --set-string name=sparkAppName --wait'],
+    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/charts/ && helm dependency update poc && helm upgrade -i sparkAppName poc/spark-application -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/temp/values.yaml --set-string name=sparkAppName --wait'],
     service_account_name="helm-identity",
     do_xcom_push=False,
     is_delete_operator_pod=True,

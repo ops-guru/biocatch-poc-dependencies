@@ -1,5 +1,5 @@
 templateType: application
-name: demo-airflow-operators
+name: demo-airflow-pod-operator
 type: Scala
 mode: cluster
 image: "gcr.io/spark-operator/spark:v3.1.1"

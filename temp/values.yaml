@@ -1,0 +1,43 @@
+templateType: application
+name: demo-airflow-operators
+type: Scala
+mode: cluster
+image: "gcr.io/spark-operator/spark:v3.1.1"
+imagePullPolicy: Always
+mainClass: org.apache.spark.examples.SparkPi
+mainApplicationFile: "local:///opt/spark/examples/jars/spark-examples_2.12-3.1.1.jar"
+sparkVersion: "3.1.1"
+restartPolicy:
+  type: OnFailure
+driver:
+  cores: 1
+  coreLimit: "1200m"
+  memory: "512m"
+  labels:
+    version: 3.1.1
+  serviceAccount: spark-application
+executor:
+  cores: 1
+  instances: 1
+  memory: "512m"
+  labels:
+    version: 3.1.1
+sparkConfigMap: configmap-spark-config
+sparkUIOptions:
+  ingressAnnotations:
+    kubernetes.io/ingress.class: kong
+serviceAccount:
+  create: true
+rbac:
+  create: true
+  clusterWideAccess: true
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: kong
+  hosts:
+    - host: bio-spark-pi.lab.opsguru.io
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []

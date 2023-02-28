@@ -1,0 +1,28 @@
+# Define type, application / scheduled
+templateType: application
+
+## @param commonLabels Add labels to all the deployed resources
+commonLabels: {}
+## @param commonAnnotations Add annotations to all the deployed resources
+commonAnnotations: {}
+
+rbac:
+  create: true
+  clusterWideAccess: true
+  # additional rbac rules
+  rules: []
+
+serviceAccount:
+  create: true
+  annotations: {}
+  automountServiceAccountToken: true
+
+ingress:
+  enabled: false
+  annotations: {}
+  hosts:
+    - host: example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []

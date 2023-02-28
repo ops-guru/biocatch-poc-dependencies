@@ -1,0 +1,9 @@
+aks-backup/
+
+.idea/
+
+# Testing generated folder
+.generated/
+
+
+Chart.lock

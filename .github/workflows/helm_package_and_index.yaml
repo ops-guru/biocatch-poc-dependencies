@@ -29,7 +29,9 @@ jobs:
 
       - name: Package Helm Charts
         run: |
-          helm package charts/
+          for i in charts/*/ ; do
+            helm package "$i"
+          done
 
       - name: Create Helm Repository Index
         run: |

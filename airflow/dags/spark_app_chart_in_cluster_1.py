@@ -23,8 +23,7 @@ dag = DAG(
     tags=['pod','inside','bitnami']
 )
 
-spark_app_name='airflow-pod-1'
-Variable.set("spark_app_name", spark_app_name)
+Variable.set("spark_app_name", "airflow-pod-1")
 
 start_pod = KubernetesPodOperator(
     task_id="deploy_helm_pod",

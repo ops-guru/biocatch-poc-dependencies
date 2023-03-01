@@ -1,22 +1,54 @@
-# Define type, application / scheduled
+## Define type, application / scheduled
 templateType: application
 
-## @param commonLabels Add labels to all the deployed resources
+## Add labels to all the deployed resources
 commonLabels: {}
-## @param commonAnnotations Add annotations to all the deployed resources
+## Add annotations to all the deployed resources
 commonAnnotations: {}
 
+## Define application name
+name: ""
+
+## Add labels to application
+labels: {}
+## Add annotations to application
+annotations: {}
+
+## Type of the Spark application
+type: Scala
+
+## SparkVersion is the version of Spark the application uses
+sparkVersion: ""
+
+## Deployment mode of the Spark application, "client" / "cluster" / "in-cluster-client"
+mode: cluster
+
+
+## Role Based Access
+## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
 rbac:
   create: true
+  ## Create Role or RoleBinding
   clusterWideAccess: true
-  # additional rbac rules
+  ## Additional rbac rules
   rules: []
 
+## Service account for pods to use
+## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 serviceAccount:
+  ## Enable creation of ServiceAccount for pods
   create: true
-  annotations: {}
+  ## The name of the ServiceAccount to use.
+  ## If not set and create is true, a driver.serviceAccount is used. If not set as well, a chart name is used
+  name: ""
+  ## Allows auto mount of ServiceAccountToken on the serviceAccount created
+  ## Can be set to false if pods using this serviceAccount do not need to use K8s API
   automountServiceAccountToken: true
+  ## Additional custom annotations for the ServiceAccount
+  annotations: {}
 
+## Ingress parameters
+## ref: https://kubernetes.io/docs/user-guide/ingress/
 ingress:
   enabled: false
   annotations: {}

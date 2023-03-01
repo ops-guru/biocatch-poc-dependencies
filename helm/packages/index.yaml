@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  spark-templates:
+  - apiVersion: v2
+    created: "2023-03-01T10:34:17.171355167Z"
+    description: A Helm chart for Kubernetes templates
+    digest: e50b8e47cceb75c0315da5fc9763fcaf3d70852f8d9ed7bd296bcd4b42da5a52
+    name: spark-templates
+    type: library
+    urls:
+    - spark-templates-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-03-01T10:34:17.169151435Z"

@@ -23,6 +23,8 @@ sparkVersion: ""
 ## Deployment mode of the Spark application, "client" / "cluster" / "in-cluster-client"
 mode: cluster
 
+## ProxyUser specifies the user to impersonate when submitting the application. It maps to the command-line flag “–proxy-user” in spark-submit.
+proxyUser: ""
 
 ## Role Based Access
 ## Ref: https://kubernetes.io/docs/admin/authorization/rbac/

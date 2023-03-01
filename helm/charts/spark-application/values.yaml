@@ -98,10 +98,10 @@ failureRetries: ""
 retryInterval: ""
 
 ## (Optional) This sets the major Python version of the docker image used to run the driver and executor containers. Can either be 2 or 3, default 2.
-pythonVersion: 2
+pythonVersion: "2"
 
 ## (Optional) This sets the Memory Overhead Factor that will allocate memory to non-JVM memory. For JVM-based jobs this value will default to 0.10, for non-JVM jobs 0.40. Value of this field will be overridden by Spec.Driver.MemoryOverhead and Spec.Executor.MemoryOverhead if they are set.
-memoryOverheadFactor: 0.10
+memoryOverheadFactor: "0.10"
 
 ## (Optional) Monitoring configures how monitoring is handled.
 ## https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/api-docs.md#sparkoperator.k8s.io/v1beta2.MonitoringSpec

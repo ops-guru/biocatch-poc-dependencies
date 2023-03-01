@@ -23,14 +23,14 @@ dag = DAG(
     tags=['pod','inside','bitnami']
 )
 
-spark_app_name="airflow-pod-03"
+spark_app_name="airflow-pod-poc-01"
 Variable.set("spark_app_name", spark_app_name)
 
 start_pod = KubernetesPodOperator(
     task_id="deploy_helm_pod",
     namespace="operators",
     image="alpine/helm",
-    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.spark_app_name }} poc/spark-application -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values.yaml --set-string name={{ var.value.spark_app_name }} --set-string driver.serviceAccount={{ var.value.spark_app_name }} --wait'],
+    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.spark_app_name }} poc/spark-application -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values.yaml --set-string name={{ var.value.spark_app_name }} --set-string driver.serviceAccount={{ var.value.spark_app_name }} --set-string fullnameOverride={{ var.value.spark_app_name }} --wait'],
     service_account_name="helm-identity",
     do_xcom_push=False,
     is_delete_operator_pod=True,

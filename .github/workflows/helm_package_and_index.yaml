@@ -12,12 +12,25 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Package Helm Chart
-        uses: docker://bitnami/alpine
-        with:
-          args: helm package charts/
+      - name: Install Helm
+        run: |
+          wget https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
+          tar -zxvf helm-v3.8.0-linux-amd64.tar.gz
+          sudo mv linux-amd64/helm /usr/local/bin/helm
+          helm version
+
+      - name: Package Helm Templates
+        run: |
+          helm package charts/**-templates
+
+      - name: Helm Dependency Update
+        run:
+          helm package charts/**-application
+
+      - name: Package Helm Charts
+        run: |
+          helm package charts/**-application
 
       - name: Create Helm Repository Index
-        uses: docker://bitnami/alpine
-        with:
-          args: helm repo index charts/
+        run: |
+          helm repo index charts/

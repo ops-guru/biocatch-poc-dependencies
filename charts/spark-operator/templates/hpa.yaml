@@ -1,0 +1,38 @@
+{{- if .Values.autoscaling.enabled }}
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ include "spark-operator.fullname" . }}
+  labels: {{- include "spark-operator.labels" . | nindent 4 }}
+    app.kubernetes.io/component: worker-autoscaler
+spec:
+  scaleTargetRef:
+    {{- if eq .Values.kind "deployment" }}
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ include "spark-operator.fullname" . }}
+    {{- else }}
+    apiVersion: apps/v1
+    kind: StatefulSet
+    name: {{ include "spark-operator.fullname" . }}
+    {{- end }}
+  minReplicas: {{ .Values.autoscaling.minReplicas }}
+  maxReplicas: {{ .Values.autoscaling.maxReplicas }}
+  metrics:
+    {{- if .Values.autoscaling.targetMemory }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetMemory }}
+    {{- end }}
+    {{- if .Values.autoscaling.targetCPU }}
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ .Values.autoscaling.targetCPU }}
+    {{- end }}
+{{- end }}

@@ -56,13 +56,3 @@ serviceAccount:
 rbac:
   create: true
   clusterWideAccess: true
-ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: kong
-  hosts:
-    - host: bio-spark-pi.lab.opsguru.io
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls: []

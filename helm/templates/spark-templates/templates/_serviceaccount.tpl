@@ -22,6 +22,6 @@ metadata:
     {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
     {{- end }}
   {{- end }}
-  automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
+automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
 {{- end -}}
 {{- end -}}

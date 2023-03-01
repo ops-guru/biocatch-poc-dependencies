@@ -16,6 +16,13 @@ driver:
   labels:
     version: 3.1.1
   serviceAccount: airflow-dag-app-poc
+  lifecycle:
+    preStop:
+      exec:
+        command:
+          - /bin/bash
+          - -c
+          - sleep 3600
 executor:
   cores: 1
   instances: 1

@@ -1,10 +1,9 @@
 {{- define "spark-templates.serviceAccount" -}}
-{{- $saName := .Values.serviceAccount.name | default (.Values.driver).serviceAccount -}}
 {{- if (.Values.serviceAccount).create -}}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ $saName | default .Chart.Name }}
+  name: {{ include "spark-templates.serviceAccountName" . }}
   {{- if or .Values.commonLabels .Values.serviceAccount.labels }}
   labels:
     {{- if .Values.commonLabels }}

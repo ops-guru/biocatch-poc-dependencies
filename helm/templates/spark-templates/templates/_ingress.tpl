@@ -1,5 +1,4 @@
 {{- define "spark-templates.ingress" -}}
-{{- $appName := .Values.name -}}
 {{- $serviceName := printf "%s-%s" .Values.name "ui-svc" -}}
 {{- $svcName := (.Values.service).name | default $serviceName -}}
 {{- $svcPort := (.Values.service).port | default 4040 -}}
@@ -7,7 +6,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $appName }}
+  name: {{ include "spark-operator.fullname" . }}
   {{- if or .Values.commonLabels (.Values.ingress).labels }}
   labels:
     {{- if .Values.commonLabels }}

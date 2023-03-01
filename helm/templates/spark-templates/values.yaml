@@ -1,3 +1,9 @@
+# -- String to partially override template (will maintain the release name)
+nameOverride: ""
+
+# -- String to override release name
+fullnameOverride: ""
+
 ## Define type, application / scheduled
 templateType: application
 

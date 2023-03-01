@@ -1,13 +1,14 @@
 # Chart release
 
-To create a versioned package of a chart, run
-```
-helm package chart
-```
+## templates
 
-To update index.yaml, run
-```
-helm repo index .
-```
+Folder for custom Helm library charts, that might be used in charts or separately.
+Order is important, because `templates` can be `dependencies` for charts and before building final chart, dependency must be updated
 
-If charts are multipartial, like `spark-application` (consists `spark-templates`), first run `helm dependency update` in the chart to download latest sub-chart and only after that package and index them.
+## charts
+
+Folder for custom Helm charts
+
+## packages
+
+Folder where github workflow stores index.yaml and *.tgz charts for future downloads

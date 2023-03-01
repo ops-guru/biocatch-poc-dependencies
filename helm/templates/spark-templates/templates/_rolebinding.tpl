@@ -1,10 +1,9 @@
 {{- define "spark-templates.roleBinding" -}}
-{{- $saName := .Values.serviceAccount.name | default (.Values.driver).serviceAccount -}}
 {{- if and (.Values.rbac).create (not .Values.rbac.clusterWideAccess) }}
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ (.Values.rbac).name | default .Chart.Name }}-binding
+  name: {{ include "spark-operator.fullname" . }}
   namespace: {{ .Release.Name }}
   {{- if or .Values.commonLabels .Values.rbac.labels }}
   labels:
@@ -26,11 +25,11 @@ metadata:
   {{- end }}
 subjects:
 - kind: ServiceAccount
-  name: {{ $saName | default .Chart.Name }}
+  name: {{ include "spark-templates.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
-  name: {{ (.Values.rbac).name | default .Chart.Name }}
+  name: {{ include "spark-operator.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 {{- end -}}
 {{- end -}}

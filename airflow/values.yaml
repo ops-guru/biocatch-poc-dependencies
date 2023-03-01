@@ -1,5 +1,5 @@
 templateType: application
-name: lifecycle-poc-airflow-pod-operator
+name: lifecycle-airflow-pod-operator
 type: Scala
 mode: cluster
 image: "gcr.io/spark-operator/spark:v3.1.1"
@@ -16,19 +16,15 @@ driver:
   labels:
     version: 3.1.1
   serviceAccount: lifecycle-airflow-dag-app-poc
-  lifecycle:
-    preStop:
-      exec:
-        command:
-          - /bin/bash
-          - -c
-          - sleep 3600
+  terminationGracePeriodSeconds: 3600
 executor:
   cores: 1
   instances: 1
   memory: "512m"
   labels:
     version: 3.1.1
+  serviceAccount: lifecycle-airflow-dag-app-poc
+  terminationGracePeriodSeconds: 360
 sparkConfigMap: configmap-spark-config
 sparkUIOptions:
   ingressAnnotations:

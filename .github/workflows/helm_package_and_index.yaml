@@ -3,7 +3,7 @@ name: Helm Package and Index
 on:
   push:
     paths:
-      - 'charts/**'
+      - 'helm/**'
 
 jobs:
   helm_package_and_index:
@@ -19,26 +19,36 @@ jobs:
           sudo mv linux-amd64/helm /usr/local/bin/helm
           helm version
 
-      - name: Package Helm Templates
+      - name: Package Helm Library Templates
         run: |
-          helm package charts/**-templates
-
-      - name: Helm Dependency Update
-        run:
-          helm dependency update charts/**-application
-
-      - name: Package Helm Charts
-        run: |
-          for i in charts/*/ ; do
-            helm package "$i"
+          for i in helm/templates/*/ ; do
+            helm package "$i" -d helm/packages/
           done
 
+      - name: Helm Update Charts Dependencies
+        run:
+          for i in helm/charts/*/ ; do
+            helm dependency update "$i" 
+          done
+
+      - name: Package Helm Charts Templates
+        run: |
+          for i in helm/charts/*/ ; do
+            helm package "$i" -d helm/packages/
+          done
+          
       - name: Create Helm Repository Index
         run: |
-          helm repo index charts/
+          helm repo index helm/packages/
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Upload index.yaml
+        uses: actions/upload-artifact@v2
         with:
-          commit_message: Update Helm charts index
-          commit_options: '--no-verify'
+          name: index.yaml
+          path: helm/packages/index.yaml
+
+      - name: Upload Packaged Charts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packaged-charts
+          path: helm/packages/*.tgz

@@ -35,11 +35,9 @@ spec:
   {{- if .Values.imagePullPolicy }}
   imagePullPolicy: {{ .Values.imagePullPolicy }}
   {{- end }}
-  {{- if .Values.imagePullSecrets }}
+  {{- with .Values.imagePullSecrets }}
   imagePullSecrets:
-  {{- range $secretName := .Values.imagePullSecrets }}
-    - name: {{ $secretName }}
-  {{- end }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.mainClass }}
   mainClass: {{ .Values.mainClass }}
@@ -47,17 +45,17 @@ spec:
   {{- if .Values.mainApplicationFile }}
   mainApplicationFile: {{ .Values.mainApplicationFile }}
   {{- end }}
-  {{- if .Values.arguments }}
-  arguments:
-  {{- range $k := .Values.arguments }}
-    - {{ . | quote }}
+  {{- with .Values.arguments }}
+  nodeSelector:
+    {{- toYaml . | nindent 8 }}
   {{- end }}
+  {{- with .Values.sparkConf }}
+  sparkConf:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
-  {{- if .Values.sparkConf }}
-  sparkConf: {{- toYaml .Values.sparkConf | nindent 4 }}
-  {{- end }}
-  {{- if .Values.hadoopConf }}
-  hadoopConf: {{- toYaml .Values.hadoopConf | nindent 4 }}
+  {{- with .Values.hadoopConf }}
+  hadoopConf:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.sparkConfigMap }}
   sparkConfigMap: {{ .Values.sparkConfigMap }}
@@ -65,8 +63,8 @@ spec:
   {{- if .Values.hadoopConfigMap }}
   hadoopConfigMap: {{ .Values.hadoopConfigMap }}
   {{- end }}
-  {{- if .Values.volumes }}
-  volumes: {{- toYaml .Values.volumes | nindent 4 }}
+  {{- with .Values.volumes }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   driver: {{- toYaml .Values.driver | nindent 4 }}
   executor: {{- toYaml .Values.executor | nindent 4 }}
@@ -74,11 +72,9 @@ spec:
   deps: {{- toYaml .Values.deps | nindent 4 }}
   {{- end }}
   restartPolicy: {{- toYaml .Values.restartPolicy | nindent 4 }}
-  {{- if .Values.nodeSelector }}
+  {{- with .Values.nodeSelector }}
   nodeSelector:
-  {{- range $k := .Values.nodeSelector }}
-  - {{ . }}
-  {{- end }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- if .Values.failureRetries }}
   failureRetries: {{ .Values.failureRetries }}
@@ -101,14 +97,17 @@ spec:
   {{- if .Values.timeToLiveSeconds }}
   timeToLiveSeconds: {{ .Values.timeToLiveSeconds }}
   {{- end }}
-  {{- if .Values.batchSchedulerOptions }}
-  batchSchedulerOptions: {{- toYaml .Values.batchSchedulerOptions | nindent 4 }}
+  {{- with .Values.batchSchedulerOptions }}
+  batchSchedulerOptions:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
-  {{- if .Values.sparkUIOptions }}
-  sparkUIOptions: {{- toYaml .Values.sparkUIOptions | nindent 4 }}
+  {{- with .Values.sparkUIOptions }}
+  sparkUIOptions:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
-  {{- if .Values.dynamicAllocation }}
-  dynamicAllocation: {{- toYaml .Values.dynamicAllocation | nindent 4 }}
+  {{- with .Values.dynamicAllocation }}
+  dynamicAllocation:
+    {{- toYaml . | nindent 4 }}
   {{- end }}
 {{- end }}
 {{- end }}

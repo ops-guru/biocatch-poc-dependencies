@@ -9,6 +9,8 @@ mainApplicationFile: "local:///opt/spark/examples/jars/spark-examples_2.12-3.1.1
 sparkVersion: "3.1.1"
 restartPolicy:
   type: OnFailure
+nodeSelector:
+  kubernetes.io/arch: amd64
 driver:
   cores: 1
   coreLimit: "1200m"
@@ -16,7 +18,17 @@ driver:
   labels:
     version: 3.1.1
   serviceAccount: lifecycle-airflow-dag-app-poc
-  terminationGracePeriodSeconds: 3600
+  terminationGracePeriodSeconds: 60
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
 executor:
   cores: 1
   instances: 1
@@ -24,7 +36,17 @@ executor:
   labels:
     version: 3.1.1
   serviceAccount: lifecycle-airflow-dag-app-poc
-  terminationGracePeriodSeconds: 360
+  terminationGracePeriodSeconds: 60
+  affinity:
+    nodeAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 1
+            preference:
+              matchExpressions:
+                - key: kubernetes.io/os
+                  operator: In
+                  values:
+                    - linux
 sparkConfigMap: configmap-spark-config
 sparkUIOptions:
   ingressAnnotations:

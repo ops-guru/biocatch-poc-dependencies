@@ -3,7 +3,7 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-01T12:21:01.255044196Z"
+    created: "2023-03-01T12:21:47.430402843Z"
     dependencies:
     - name: spark-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
@@ -18,7 +18,7 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-01T12:21:01.257499977Z"
+    created: "2023-03-01T12:21:47.432174039Z"
     description: A Helm chart for Spark on Kubernetes operator
     digest: 05ab7a54966811de5dba6ee68bc777ddd4ef8b2ffb1a04a12909ca9de2bf27f5
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
@@ -33,12 +33,12 @@ entries:
     version: 1.1.26-og-0.0.1
   spark-templates:
   - apiVersion: v2
-    created: "2023-03-01T12:21:01.258164373Z"
+    created: "2023-03-01T12:21:47.432821338Z"
     description: A Helm chart for Kubernetes templates
-    digest: 22b934235b1bb83b47d327ca84b9c20eff50364d391d1a06a56b1cbd3536fa04
+    digest: 30eb9d344c8972aa83e233ae69ce6d87b1c7399f9591bf1f53cc21e800a7ac6b
     name: spark-templates
     type: library
     urls:
     - spark-templates-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-01T12:21:01.252726613Z"
+generated: "2023-03-01T12:21:47.427604449Z"

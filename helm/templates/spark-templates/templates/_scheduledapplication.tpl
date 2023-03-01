@@ -3,7 +3,7 @@
 apiVersion: sparkoperator.k8s.io/v1beta2
 kind: ScheduledSparkApplication
 metadata:
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   {{- if or .Values.commonLabels .Values.labels }}
   labels:
     {{- if .Values.commonLabels }}

@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   namespace: {{ .Release.Name }}
   {{- if or .Values.commonLabels .Values.rbac.labels }}
   labels:
@@ -29,7 +29,7 @@ subjects:
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 {{- end -}}
 {{- end -}}

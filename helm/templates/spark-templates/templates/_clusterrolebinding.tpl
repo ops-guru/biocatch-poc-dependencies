@@ -3,7 +3,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   {{- if or .Values.commonLabels .Values.rbac.labels }}
   labels:
     {{- if .Values.commonLabels }}
@@ -28,7 +28,7 @@ subjects:
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 {{- end -}}
 {{- end -}}

@@ -6,7 +6,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "spark-operator.fullname" . }}
+  name: {{ include "spark-templates.fullname" . }}
   {{- if or .Values.commonLabels (.Values.ingress).labels }}
   labels:
     {{- if .Values.commonLabels }}

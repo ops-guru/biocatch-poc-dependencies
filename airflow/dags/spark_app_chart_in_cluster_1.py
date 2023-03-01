@@ -24,7 +24,7 @@ dag = DAG(
 )
 
 spark_app_name='airflow-pod-1'
-Variable.set("spark_app_name", spark_app_name, dag=dag)
+Variable.set("spark_app_name", spark_app_name)
 
 start_pod = KubernetesPodOperator(
     task_id="deploy_helm_pod",

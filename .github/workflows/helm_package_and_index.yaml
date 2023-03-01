@@ -6,7 +6,7 @@ on:
       - 'helm/**'
 
 jobs:
-  library_package_and_index:
+  helm_package_and_index:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -26,18 +26,18 @@ jobs:
           done
           helm repo index helm/packages/ 
 
-      - name: Commit Index
+      - name: Commit Library TemplatesIndex
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "helm/packages/index.yaml"
-          commit_message: Update Helm index.yaml
+          commit_message: Update Helm Library Templates index.yaml
           commit_options: '--no-verify'
 
-      - name: Commit Packages
+      - name: Commit Library Templates Packages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "helm/packages/*.tgz"
-          commit_message: Update Helm Packages
+          commit_message: Update Helm Library Templates Packages
           commit_options: '--no-verify'
 
       - name: Helm Update Charts Dependencies
@@ -53,17 +53,17 @@ jobs:
           done
           helm repo index helm/packages/
 
-      - name: Commit Index
+      - name: Commit Charts Templates Index
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "helm/packages/index.yaml"
-          commit_message: Update Helm index.yaml
+          commit_message: Update Helm Charts Templates index.yaml
           commit_options: '--no-verify'
 
-      - name: Commit Packages
+      - name: Commit Charts Templates Packages
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "helm/packages/*.tgz"
-          commit_message: Update Helm Packages
+          commit_message: Update Helm Charts Templates Packages
           commit_options: '--no-verify'
 

@@ -25,7 +25,7 @@ jobs:
 
       - name: Helm Dependency Update
         run:
-          helm dependency update charts/
+          helm dependency update charts/**-application
 
       - name: Package Helm Charts
         run: |

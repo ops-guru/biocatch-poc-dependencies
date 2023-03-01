@@ -28,7 +28,7 @@ jobs:
 
       - name: Create Helm Helm Library Templates Index
         run: |
-          helm repo index helm/packages/
+          helm repo index helm/packages/ 
           ls helm/packages/
 
       - name: Upload Library index.yaml
@@ -42,6 +42,20 @@ jobs:
         with:
           name: packaged-charts
           path: helm/packages/*.tgz
+
+      - name: Commit Index
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "helm/packages/index.yaml"
+          commit_message: Update Helm index.yaml
+          commit_options: '--no-verify'
+
+      - name: Commit Packages
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "helm/packages/*.tgz"
+          commit_message: Update Helm Packages
+          commit_options: '--no-verify'
 
   helm_package_and_index_charts:
     runs-on: ubuntu-latest
@@ -85,3 +99,17 @@ jobs:
         with:
           name: packaged-charts
           path: helm/packages/*.tgz
+
+      - name: Commit Index
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "helm/packages/index.yaml"
+          commit_message: Update Helm index.yaml
+          commit_options: '--no-verify'
+
+      - name: Commit Packages
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: "helm/packages/*.tgz"
+          commit_message: Update Helm Packages
+          commit_options: '--no-verify'

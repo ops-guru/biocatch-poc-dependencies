@@ -6,7 +6,7 @@ on:
       - 'helm/**'
 
 jobs:
-  helm_package_and_index:
+  helm_package_and_index_library:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -26,10 +26,40 @@ jobs:
           done
           ls helm/packages/
 
+      - name: Create Helm Helm Library Templates Index
+        run: |
+          helm repo index helm/packages/
+          ls helm/packages/
+
+      - name: Upload Library index.yaml
+        uses: actions/upload-artifact@v2
+        with:
+          name: index.yaml
+          path: helm/packages/index.yaml
+
+      - name: Upload Packaged Charts
+        uses: actions/upload-artifact@v2
+        with:
+          name: packaged-charts
+          path: helm/packages/*.tgz
+
+  helm_package_and_index_charts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Install Helm
+        run: |
+          wget https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
+          tar -zxvf helm-v3.8.0-linux-amd64.tar.gz
+          sudo mv linux-amd64/helm /usr/local/bin/helm
+          helm version
+
       - name: Helm Update Charts Dependencies
         run:
           for i in helm/charts/*/ ; do
-            helm dependency update "$i";
+          helm dependency update "$i";
           done
 
       - name: Package Helm Charts Templates
@@ -38,8 +68,8 @@ jobs:
             helm package "$i" -d helm/packages/
           done
           ls helm/packages/
-          
-      - name: Create Helm Repository Index
+
+      - name: Create Helm Charts Index
         run: |
           helm repo index helm/packages/
           ls helm/packages/

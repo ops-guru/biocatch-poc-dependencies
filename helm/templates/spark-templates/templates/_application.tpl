@@ -87,10 +87,10 @@ spec:
   retryInterval: {{ .Values.retryInterval }}
   {{- end }}
   {{- if .Values.pythonVersion }}
-  pythonVersion: {{ .Values.pythonVersion }}
+  pythonVersion: {{ .Values.pythonVersion | quote }}
   {{- end }}
   {{- if .Values.memoryOverheadFactor }}
-  memoryOverheadFactor: {{ .Values.memoryOverheadFactor }}
+  memoryOverheadFactor: {{ .Values.memoryOverheadFactor | quote }}
   {{- end }}
   {{- if .Values.monitoring }}
   monitoring: {{- toYaml .Values.monitoring | nindent 4 }}

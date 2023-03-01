@@ -6,7 +6,7 @@ on:
       - 'helm/**'
 
 jobs:
-  helm_package_and_index_library:
+  library_package_and_index:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -24,24 +24,7 @@ jobs:
           for i in helm/templates/*/ ; do
             helm package "$i" -d helm/packages/
           done
-          ls helm/packages/
-
-      - name: Create Helm Helm Library Templates Index
-        run: |
           helm repo index helm/packages/ 
-          ls helm/packages/
-
-      - name: Upload Library index.yaml
-        uses: actions/upload-artifact@v2
-        with:
-          name: index.yaml
-          path: helm/packages/index.yaml
-
-      - name: Upload Packaged Charts
-        uses: actions/upload-artifact@v2
-        with:
-          name: packaged-charts
-          path: helm/packages/*.tgz
 
       - name: Commit Index
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -57,23 +40,10 @@ jobs:
           commit_message: Update Helm Packages
           commit_options: '--no-verify'
 
-  helm_package_and_index_charts:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v2
-
-      - name: Install Helm
-        run: |
-          wget https://get.helm.sh/helm-v3.8.0-linux-amd64.tar.gz
-          tar -zxvf helm-v3.8.0-linux-amd64.tar.gz
-          sudo mv linux-amd64/helm /usr/local/bin/helm
-          helm version
-
       - name: Helm Update Charts Dependencies
         run:
           for i in helm/charts/*/ ; do
-          helm dependency update "$i";
+            helm dependency update "$i";
           done
 
       - name: Package Helm Charts Templates
@@ -81,24 +51,7 @@ jobs:
           for i in helm/charts/*/ ; do
             helm package "$i" -d helm/packages/
           done
-          ls helm/packages/
-
-      - name: Create Helm Charts Index
-        run: |
           helm repo index helm/packages/
-          ls helm/packages/
-
-      - name: Upload index.yaml
-        uses: actions/upload-artifact@v2
-        with:
-          name: index.yaml
-          path: helm/packages/index.yaml
-
-      - name: Upload Packaged Charts
-        uses: actions/upload-artifact@v2
-        with:
-          name: packaged-charts
-          path: helm/packages/*.tgz
 
       - name: Commit Index
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -113,3 +66,4 @@ jobs:
           file_pattern: "helm/packages/*.tgz"
           commit_message: Update Helm Packages
           commit_options: '--no-verify'
+

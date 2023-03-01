@@ -29,7 +29,7 @@ jobs:
       - name: Helm Update Charts Dependencies
         run:
           for i in helm/charts/*/ ; do
-            helm dependency update "$i" 
+            helm dependency update "$i";
           done
 
       - name: Package Helm Charts Templates

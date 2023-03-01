@@ -22,7 +22,7 @@ dag = DAG(
     schedule_interval=timedelta(days=1),
     tags=['pod','inside','bitnami']
 )
-spark_app_name="airflow-pod-01"
+spark_app_name="airflow-pod-02"
 Variable.set("spark_app_name", spark_app_name)
 
 start_pod = KubernetesPodOperator(

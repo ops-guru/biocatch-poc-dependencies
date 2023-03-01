@@ -12,3 +12,8 @@ Folder for custom Helm charts
 ## packages
 
 Folder where github workflow stores index.yaml and *.tgz charts for future downloads
+
+
+# Usage
+
+You may download spark-application helm chart as a whole or use spark-templates as a dependency in your custom helm chart

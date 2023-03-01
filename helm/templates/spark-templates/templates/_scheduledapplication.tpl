@@ -23,11 +23,17 @@ metadata:
     {{- end }}
   {{- end }}
 spec:
-  suspend: {{ .Values.suspend | default false }}
-  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
   schedule: {{ .Values.schedule | quote }}
+  {{- if .Values.suspend }}
+  suspend: {{ .Values.suspend | default false }}
+  {{- end }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  {{- if .Values.successfulRunHistoryLimit }}
   successfulRunHistoryLimit: {{ .Values.successfulRunHistoryLimit | default 1 }}
+  {{- end }}
+  {{- if .Values.failedRunHistoryLimit }}
   failedRunHistoryLimit: {{ .Values.failedRunHistoryLimit | default 1 }}
+  {{- end }}
   template: {{- toYaml .Values.template | nindent 4 }}
 {{- end }}
 {{- end }}

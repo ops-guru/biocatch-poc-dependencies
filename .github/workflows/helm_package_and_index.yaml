@@ -26,7 +26,7 @@ jobs:
           done
           helm repo index helm/packages/ 
 
-      - name: Commit Library TemplatesIndex
+      - name: Commit Library Templates Index
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           file_pattern: "helm/packages/index.yaml"

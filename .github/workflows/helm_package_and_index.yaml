@@ -1,0 +1,23 @@
+name: Helm Package and Index
+
+on:
+  push:
+    paths:
+      - 'charts/**'
+
+jobs:
+  helm_package_and_index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Package Helm Chart
+        uses: docker://bitnami/alpine
+        with:
+          args: helm package charts/
+
+      - name: Create Helm Repository Index
+        uses: docker://bitnami/alpine
+        with:
+          args: helm repo index charts/

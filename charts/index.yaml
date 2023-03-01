@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   spark-templates:
   - apiVersion: v2
-    created: "2023-03-01T10:34:23.957246+01:00"
+    created: "2023-03-01T09:41:05.574273Z"
     description: A Helm chart for Kubernetes templates
     digest: fe291fdef321fdbb94ff8bd69d93a029455eb0f626833b9628f701e0b5fbb13c
     name: spark-templates
@@ -10,4 +10,4 @@ entries:
     urls:
     - spark-templates-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-01T10:34:23.956268+01:00"
+generated: "2023-03-01T09:41:05.573651894Z"

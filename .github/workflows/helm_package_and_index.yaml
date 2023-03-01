@@ -24,6 +24,7 @@ jobs:
           for i in helm/templates/*/ ; do
             helm package "$i" -d helm/packages/
           done
+          ls helm/packages/
 
       - name: Helm Update Charts Dependencies
         run:
@@ -36,10 +37,12 @@ jobs:
           for i in helm/charts/*/ ; do
             helm package "$i" -d helm/packages/
           done
+          ls helm/packages/
           
       - name: Create Helm Repository Index
         run: |
           helm repo index helm/packages/
+          ls helm/packages/
 
       - name: Upload index.yaml
         uses: actions/upload-artifact@v2

@@ -47,7 +47,7 @@ spec:
   {{- end }}
   {{- with .Values.arguments }}
   nodeSelector:
-    {{- toYaml . | nindent 8 }}
+    {{- toYaml . | nindent 4 }}
   {{- end }}
   {{- with .Values.sparkConf }}
   sparkConf:

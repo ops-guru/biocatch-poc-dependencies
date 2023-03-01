@@ -31,6 +31,6 @@ Create the name of the service account to use
 {{- if .Values.serviceAccount.create -}}
     {{ default .Chart.Name ( default (.Values.driver).serviceAccount .Values.serviceAccount.name) }}
 {{- else -}}
-    {{ default "default" .Values.serviceAccount.name }}
+    {{ default (.Values.driver).serviceAccount .Values.serviceAccount.name }}
 {{- end -}}
 {{- end -}}

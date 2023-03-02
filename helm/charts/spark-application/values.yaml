@@ -172,19 +172,3 @@ serviceAccount:
   automountServiceAccountToken: true
   ## Additional custom annotations for the ServiceAccount
   annotations: {}
-
-## Ingress parameters
-## ref: https://kubernetes.io/docs/user-guide/ingress/
-ingress:
-  ## Enable creation of Ingress for services
-  enabled: false
-  ## Additional custom annotations for the Ingress
-  annotations: {}
-  ## Set of hosts and rules for the Ingress
-  hosts:
-    - host: example.com
-      paths:
-        - path: /
-          pathType: ImplementationSpecific
-  ## Set of TLS certificates for the Ingress
-  tls: []

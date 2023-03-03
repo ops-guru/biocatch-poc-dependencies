@@ -4,3 +4,6 @@ bindings:
   - role: roles/iam.workloadIdentityUser
     members:
       - serviceAccount:artur-bolt-development.svc.id.goog[spark-operator/crossplane-airflow]
+serviceAccount:
+  annotations:
+    iam.gke.io/gcp-service-account: crossplane-airflow@artur-bolt-development.iam.gserviceaccount.com

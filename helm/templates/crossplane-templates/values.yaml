@@ -17,3 +17,15 @@ bindings: {}
 commonLabels: {}
 # -- Add annotations to all the deployed resources
 commonAnnotations: {}
+
+# -- Service account for pods to use
+# ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+serviceAccount:
+  # -- The name of the ServiceAccount to use.
+  # -- If not set and create is true, a driver.serviceAccount is used. If not set as well, a chart name is used
+  name: ""
+  # -- Allows auto mount of ServiceAccountToken on the serviceAccount created
+  # -- Can be set to false if pods using this serviceAccount do not need to use K8s API
+  automountServiceAccountToken: true
+  # -- Additional custom annotations for the ServiceAccount
+  annotations: {}

@@ -151,7 +151,7 @@ failedRunHistoryLimit: 1
 template: {}
 
 # -- Role Based Access
-# -- Ref: https://kubernetes.io/docs/admin/authorization/rbac/
+# Ref: https://kubernetes.io/docs/admin/authorization/rbac/
 rbac:
   create: true
   # -- Create Role or RoleBinding
@@ -160,7 +160,7 @@ rbac:
   rules: []
 
 # -- Service account for pods to use
-# -- ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
+# ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 serviceAccount:
   # -- Enable creation of ServiceAccount for pods
   create: true

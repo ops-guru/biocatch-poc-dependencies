@@ -1,8 +1,28 @@
 apiVersion: v1
 entries:
+  crossplane-service-account:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-03-03T12:41:33.037393326Z"
+    dependencies:
+    - name: crossplane-templates
+      repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
+      version: 0.x.x
+    description: A Helm chart for SparkApplication CRD
+    digest: 75449101ca871dcd537b9ff7dda9cc9335a564d9d020d383fdd84918ad6ddd74
+    maintainers:
+    - email: artur@opsguru.io
+      name: artur-bolt
+    name: crossplane-service-account
+    sources:
+    - https://doc.crds.dev/github.com/crossplane/provider-gcp
+    type: application
+    urls:
+    - crossplane-service-account-0.0.1.tgz
+    version: 0.0.1
   crossplane-templates:
   - apiVersion: v2
-    created: "2023-03-03T12:41:29.271853303Z"
+    created: "2023-03-03T12:41:33.037705025Z"
     description: A Helm chart for Kubernetes templates
     digest: 827876732d72d3931f1aafb1a97ee65a8f3631f5cabb8c25c04632a64638e185
     name: crossplane-templates
@@ -13,13 +33,13 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-03T12:41:29.273662105Z"
+    created: "2023-03-03T12:41:33.03937652Z"
     dependencies:
     - name: spark-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
     description: A Helm chart for SparkApplication CRD
-    digest: 19166ad2dba8a041c4214522a517684a131b090f11fece4ac7bb836bfdaef64f
+    digest: 48ef155294390d422575939041f0814e417164cfd357989ee78e1b6676b2c90e
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -33,9 +53,9 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-03T12:41:29.275488007Z"
+    created: "2023-03-03T12:41:33.041793113Z"
     description: A Helm chart for Spark on Kubernetes operator
-    digest: 5413cd1df9b10a96e9dd0fb196f7f32c909b0d339b855c7dd9e9435c5d073b03
+    digest: 05022df7a12303ea8b1bd183341f567e51cf35e11a5b49a2555f2501bec08d45
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
     keywords:
     - spark
@@ -50,7 +70,7 @@ entries:
     version: 1.1.26-og-0.0.1
   spark-templates:
   - apiVersion: v2
-    created: "2023-03-03T12:41:29.276169308Z"
+    created: "2023-03-03T12:41:33.042636411Z"
     description: A Helm chart for Kubernetes templates
     digest: e7fa88b219081032b9195900e40cb5eb4233e396003d20bfaa40d9a7e925e2e8
     maintainers:
@@ -63,4 +83,4 @@ entries:
     urls:
     - spark-templates-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-03T12:41:29.270704102Z"
+generated: "2023-03-03T12:41:33.03619233Z"

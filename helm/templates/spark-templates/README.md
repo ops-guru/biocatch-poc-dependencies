@@ -8,7 +8,7 @@ A Helm chart for Kubernetes templates
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-|  | <artur@opsguru.io> |  |
+| artur-bolt | <artur@opsguru.io> |  |
 
 ## Source Code
 
@@ -48,13 +48,13 @@ A Helm chart for Kubernetes templates
 | nodeSelector | Optional | `{}` | NodeSelector is the Kubernetes node selector to be added to the driver and executor pods. This field is mutually exclusive with nodeSelector at podSpec level (driver or executor). This field will be deprecated in future versions (at SparkApplicationSpec level). |
 | proxyUser | Optional | `""` | ProxyUser specifies the user to impersonate when submitting the application. It maps to the command-line flag “–proxy-user” in spark-submit. |
 | pythonVersion | Optional | `""` | This sets the major Python version of the docker image used to run the driver and executor containers. Can either be 2 or 3, default 2. |
-| rbac | object | `{"clusterWideAccess":true,"create":true,"rules":[]}` | Ref: https://kubernetes.io/docs/admin/authorization/rbac/ |
+| rbac | object | `{"clusterWideAccess":true,"create":true,"rules":[]}` | Role Based Access Ref: https://kubernetes.io/docs/admin/authorization/rbac/ |
 | rbac.clusterWideAccess | bool | `true` | Create Role or RoleBinding |
 | rbac.rules | list | `[]` | Additional rbac rules |
 | restartPolicy | object | `{}` | RestartPolicy defines the policy on if and in which conditions the controller should restart an application. https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/api-docs.md#sparkoperator.k8s.io/v1beta2.RestartPolicy |
 | retryInterval | Optional | `""` | RetryInterval is the unit of intervals in seconds between submission retries. |
 | schedule | string | `""` | Schedule is a cron schedule on which the application should run. |
-| serviceAccount | object | `{"annotations":{},"automountServiceAccountToken":true,"create":true,"name":""}` | ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ |
+| serviceAccount | object | `{"annotations":{},"automountServiceAccountToken":true,"create":true,"name":""}` | Service account for pods to use ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ |
 | serviceAccount.annotations | object | `{}` | Additional custom annotations for the ServiceAccount |
 | serviceAccount.automountServiceAccountToken | bool | `true` | Can be set to false if pods using this serviceAccount do not need to use K8s API |
 | serviceAccount.create | bool | `true` | Enable creation of ServiceAccount for pods |

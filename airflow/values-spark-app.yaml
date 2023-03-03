@@ -50,7 +50,7 @@ sparkUIOptions:
   ingressAnnotations:
     kubernetes.io/ingress.class: kong
 serviceAccount:
-  create: false
+  create: true
 rbac:
   create: true
   clusterWideAccess: true

@@ -4,6 +4,16 @@
 
 A Helm chart for Kubernetes templates
 
+## Maintainers
+
+| Name | Email | Url |
+| ---- | ------ | --- |
+| artur-bolt | <artur@opsguru.io> |  |
+
+## Source Code
+
+* <https://doc.crds.dev/github.com/crossplane/provider-gcp>
+
 ## Values
 
 | Key | Type | Default | Description |

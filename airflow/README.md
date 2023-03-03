@@ -4,4 +4,6 @@ Folder for files accessible by Airflow
 
 ## PoC values
 
-`values.yaml` file holds example SparkApplication values that are passed in Airflow DAG to `spark-application` helm chart.
+`spark-app-values.yaml` file holds example SparkApplication values that are passed in Airflow DAG to `spark-application` helm chart.
+
+`crossplane-sa-values.yaml` file holds example ServiceAccount values that are passed in Airflow DAG to `spark-application` helm chart.

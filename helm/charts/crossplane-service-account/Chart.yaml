@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: 1.0.0
+dependencies:
+  - name: crossplane-templates
+    repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
+    version: 0.x.x
+description: A Helm chart for SparkApplication CRD
+name: crossplane-service-account
+type: application
+version: 0.0.1
+sources:
+  - https://doc.crds.dev/github.com/crossplane/provider-gcp
+maintainers:
+  - email: artur@opsguru.io
+    name: artur-bolt

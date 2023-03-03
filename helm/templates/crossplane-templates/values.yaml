@@ -1,0 +1,14 @@
+# -- String to partially override template (will maintain the release name)
+nameOverride: ""
+
+# -- String to override release name
+fullnameOverride: ""
+
+# -- Deletion policy for the resources
+deletionPolicy: Delete
+
+# -- Name of the Provider config
+providerConfigName: ""
+
+# -- Service Account Policy bindings
+bindings: {}

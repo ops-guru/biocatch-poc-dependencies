@@ -17,20 +17,35 @@ default_args = {
     'retries': 0
 }
 dag = DAG(
-    dag_id='spark_app_chart_in_cluster_1',
+    dag_id='crossplane_spark_app_chart_in_cluster_1',
     default_args=default_args,
     schedule_interval=timedelta(days=1),
-    tags=['pod','inside','bitnami']
+    tags=['pod','inside','bitnami','crossplane']
 )
 
-spark_app_name="airflow-pod-poc-01"
+spark_app_name="crossplane-airflow-pod-poc"
 Variable.set("spark_app_name", spark_app_name)
 
 spark_app_namespace="spark-operator"
 Variable.set("spark_app_namespace", spark_app_namespace)
 
-start_pod = KubernetesPodOperator(
-    task_id="deploy_helm_pod",
+start_crossplane_pod = KubernetesPodOperator(
+    task_id="deploy_helm_crossplane_pod",
+    namespace=spark_app_namespace,
+    image="alpine/helm",
+    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.spark_app_name }} poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/crossplane-sa-values.yaml --set-string fullnameOverride={{ var.value.spark_app_name }}'],
+    service_account_name="helm-identity",
+    do_xcom_push=False,
+    is_delete_operator_pod=True,
+    get_logs=True,
+    log_events_on_failure=True,
+    random_name_suffix=spark_app_name,
+    kubernetes_conn_id="kubernetes_default",
+    dag=dag
+)
+
+start_spark_pod = KubernetesPodOperator(
+    task_id="deploy_helm_spark_pod",
     namespace=spark_app_namespace,
     image="alpine/helm",
     cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.spark_app_name }} poc/spark-application --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/spark-app-values.yaml --set-string name={{ var.value.spark_app_name }} --set-string driver.serviceAccount={{ var.value.spark_app_name }} --set-string executor.serviceAccount={{ var.value.spark_app_name }} --set-string fullnameOverride={{ var.value.spark_app_name }}'],
@@ -52,4 +67,4 @@ sensor = SparkKubernetesSensor(
     api_group="sparkoperator.k8s.io",
     attach_log=True
 )
-start_pod >> sensor
+start_crossplane_pod >> start_spark_pod >> sensor

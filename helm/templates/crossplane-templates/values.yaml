@@ -12,3 +12,8 @@ providerConfigName: ""
 
 # -- Service Account Policy bindings
 bindings: {}
+
+# -- Add labels to all the deployed resources
+commonLabels: {}
+# -- Add annotations to all the deployed resources
+commonAnnotations: {}

@@ -11,11 +11,11 @@ replicaCount: 1
 
 image:
   # -- Image repository
-  repository: ghcr.io/googlecloudplatform/spark-operator
+  repository: docker.io/arturbolt/spark-operator
   # -- Image pull policy
   pullPolicy: IfNotPresent
   # -- if set, override the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: spark-3.3.1-hadoop3.3
 
 # -- Image pull secrets
 imagePullSecrets: []
@@ -77,10 +77,10 @@ podSecurityContext: {}
 # securityContext -- Operator container security context
 securityContext: {}
 
-# volumes - Operator volumes
+# -- Operator volumes
 volumes: []
 
-# volumeMounts - Operator volumeMounts
+# -- Operator volumeMounts
 volumeMounts: []
 
 webhook:
@@ -103,13 +103,13 @@ webhook:
     "helm.sh/hook-delete-policy": hook-succeeded
   # -- Webhook Timeout in seconds
   timeout: 30
-  # nodeSelector -- Node labels for pod assignment
+  # -- Node labels for pod assignment
   nodeSelector: {}
-  # tolerations -- List of node taints to tolerate
+  # -- List of node taints to tolerate
   tolerations: []
-  # affinity -- Affinity for pod assignment
+  # -- Affinity for pod assignment
   affinity: {}
-  # topologySpreadConstraints -- topologySpreadConstraints for pod assignment
+  # -- topologySpreadConstraints for pod assignment
   topologySpreadConstraints: {}
 
 metrics:
@@ -191,15 +191,20 @@ istio:
 # labelSelectorFilter -- A comma-separated list of key=value, or key labels to filter resources during watch and list based on the specified labels.
 labelSelectorFilter: ""
 
-# livenessProbe -- set configurable livenessProbe for operator
+# -- Set configurable livenessProbe for operator
 livenessProbe: {}
 
-# readinessProbe -- set configurable readinessProbe for operator
+# -- Set configurable readinessProbe for operator
 readinessProbe: {}
 
 autoscaling:
+  # -- Enable HorizontalPodAutoscaler for pods
   enabled: false
+  # -- Configure a minimum amount of pods
   minReplicas: 1
+  # -- Configure a maximum amount of pods
   maxReplicas: 5
+  # -- Define the CPU target to trigger the scaling actions (utilization percentage)
   targetCPU: 50
+  # -- Define the memory target to trigger the scaling actions (utilization percentage)
   targetMemory: 50

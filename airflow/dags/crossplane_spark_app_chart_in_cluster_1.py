@@ -36,7 +36,7 @@ start_crossplane_pod = KubernetesPodOperator(
     cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.crossplane_app_name }} poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_app_name }}'],
     service_account_name="helm-identity",
     do_xcom_push=False,
-    is_delete_operator_pod=True,
+    is_delete_operator_pod=False,
     get_logs=True,
     log_events_on_failure=True,
     random_name_suffix=crossplane_app_name,

@@ -1,8 +1,8 @@
-# spark-templates
+# spark-application
 
-![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: library](https://img.shields.io/badge/Type-library-informational?style=flat-square)
+![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
-A Helm chart for Kubernetes templates
+A Helm chart for SparkApplication CRD
 
 ## Maintainers
 
@@ -13,6 +13,12 @@ A Helm chart for Kubernetes templates
 ## Source Code
 
 * <https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/api-docs.md>
+
+## Requirements
+
+| Repository | Name | Version |
+|------------|------|---------|
+| https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ | spark-templates | 0.x.x |
 
 ## Values
 

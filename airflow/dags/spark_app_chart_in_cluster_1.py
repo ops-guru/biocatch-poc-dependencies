@@ -26,9 +26,13 @@ dag = DAG(
 spark_app_name="airflow-pod-poc-05"
 Variable.set("spark_app_name", spark_app_name)
 
+spark_app_namespace="spark-operator"
+Variable.set("spark_app_namespace", spark_app_namespace)
+
+
 start_pod = KubernetesPodOperator(
     task_id="deploy_helm_pod",
-    namespace="operators",
+    namespace=spark_app_namespace,
     image="alpine/helm",
     cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.spark_app_name }} poc/spark-application --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values.yaml --set-string name={{ var.value.spark_app_name }} --set-string driver.serviceAccount={{ var.value.spark_app_name }} --set-string executor.serviceAccount={{ var.value.spark_app_name }} --set-string fullnameOverride={{ var.value.spark_app_name }}'],
     service_account_name="helm-identity",
@@ -42,7 +46,7 @@ start_pod = KubernetesPodOperator(
 )
 sensor = SparkKubernetesSensor(
     task_id='sensor_helm_app',
-    namespace="operators",
+    namespace=spark_app_namespace,
     application_name=spark_app_name,
     kubernetes_conn_id="kubernetes_default",
     dag=dag,

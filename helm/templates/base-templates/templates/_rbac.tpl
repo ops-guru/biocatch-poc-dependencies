@@ -1,10 +1,4 @@
 {{- define "base-templates.rbac" -}}
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: {{ include "base-templates.fullname" . }}
-  namespace: {{ include "base-templates.fullname" . }}
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:

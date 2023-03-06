@@ -1,8 +1,26 @@
 apiVersion: v1
 entries:
+  base-resources:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2023-03-06T10:58:04.135865689Z"
+    dependencies:
+    - name: base-templates
+      repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
+      version: 0.x.x
+    description: A Helm chart for Base Resources
+    digest: 5624313b4c579ad0136d3353245f16738bd543cddd4c9d5cfdcafd5d83356bc4
+    maintainers:
+    - email: artur@opsguru.io
+      name: artur-bolt
+    name: base-resources
+    type: application
+    urls:
+    - base-resources-0.0.1.tgz
+    version: 0.0.1
   base-templates:
   - apiVersion: v2
-    created: "2023-03-06T10:57:59.826271567Z"
+    created: "2023-03-06T10:58:04.136134889Z"
     description: A Helm chart for Kubernetes templates
     digest: 0a74fe8a1e1d79b8c2d7cb495be6ea69a4b01d7a72b868fa9eac3cfc68d9f7f8
     maintainers:
@@ -16,13 +34,13 @@ entries:
   crossplane-service-account:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-06T10:57:59.826774166Z"
+    created: "2023-03-06T10:58:04.136596489Z"
     dependencies:
     - name: crossplane-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
-    description: A Helm chart for SparkApplication CRD
-    digest: bc26cc01e1cad6ecf51825e898dafd9cb4f817a057375d5f63c0f7fe86484cc5
+    description: A Helm chart for Crossplane Service Account
+    digest: c1f087af0ae2de10bc7cfd65ff10e4b412424659bb88d396f03ad4e4e80f243a
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -35,7 +53,7 @@ entries:
     version: 0.0.1
   crossplane-templates:
   - apiVersion: v2
-    created: "2023-03-06T10:57:59.827063365Z"
+    created: "2023-03-06T10:58:04.136844389Z"
     description: A Helm chart for Kubernetes templates
     digest: 6e426263cad3dcdfa482706195226ec6dc4f90ee678fc04294a0ef90b0fb0193
     maintainers:
@@ -51,13 +69,13 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-06T10:57:59.828363861Z"
+    created: "2023-03-06T10:58:04.138710089Z"
     dependencies:
     - name: spark-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
     description: A Helm chart for SparkApplication CRD
-    digest: be394016476b9a2015e68582c643df6064755580e6f18d54542ff9b2f0c76348
+    digest: c0e69c36a6cecf7d2aab5546ee981aee2ed14647c36095a3afe6103c68e4efa5
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -71,9 +89,9 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-06T10:57:59.830113355Z"
+    created: "2023-03-06T10:58:04.14067959Z"
     description: A Helm chart for Spark on Kubernetes operator
-    digest: 5b7507606c8e53602193323b45913f41ac996cd4178182d25343fd247e7a4e65
+    digest: 4c2f470b1e6aa0e9b45995cbae9ab5bcd35cd286f38379f276fff6d533bf4bd8
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
     keywords:
     - spark
@@ -88,7 +106,7 @@ entries:
     version: 1.1.26-og-0.0.1
   spark-templates:
   - apiVersion: v2
-    created: "2023-03-06T10:57:59.830781353Z"
+    created: "2023-03-06T10:58:04.14136179Z"
     description: A Helm chart for Kubernetes templates
     digest: 28e0b48e882b091ea92b23a0ec04dec150d2f0a5404f84f88f4028ba2f88ae19
     maintainers:
@@ -101,4 +119,4 @@ entries:
     urls:
     - spark-templates-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-06T10:57:59.822813678Z"
+generated: "2023-03-06T10:58:04.135189089Z"

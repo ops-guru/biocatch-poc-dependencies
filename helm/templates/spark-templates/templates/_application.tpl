@@ -64,6 +64,7 @@ spec:
   hadoopConfigMap: {{ .Values.hadoopConfigMap }}
   {{- end }}
   {{- with .Values.volumes }}
+  volumes:
     {{- toYaml . | nindent 4 }}
   {{- end }}
   driver: {{- toYaml .Values.driver | nindent 4 }}

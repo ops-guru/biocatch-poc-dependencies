@@ -15,7 +15,7 @@ image:
   pullPolicy: IfNotPresent
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   # nodePort: 32000
   port:
     number: 18080

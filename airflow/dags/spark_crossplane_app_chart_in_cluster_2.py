@@ -48,7 +48,7 @@ start_crossplane_pod = KubernetesPodOperator(
 )
 
 start_base_pod = KubernetesPodOperator(
-    task_id="deploy_helm_crossplane_pod",
+    task_id="deploy_helm_base_pod",
     namespace=crossplane_app_namespace,
     image="alpine/helm",
     cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.crossplane_app_name }}-base poc/base-resources --atomic --debug --create-namespace -n {{ var.value.crossplane_app_name }} -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_app_name }} --set serviceAccount.annotations."iam\.gke\.op/gcp-service-account"={{ var.value.crossplane_app_name }}@{{ var.value.gcp_project_name }}.iam.gserviceaccount.com'],
@@ -85,4 +85,4 @@ sensor = SparkKubernetesSensor(
     api_group="sparkoperator.k8s.io",
     attach_log=True
 )
-start_crossplane_pod >> start_spark_pod >> sensor
+start_crossplane_pod >> start_base_pod >> start_spark_pod >> sensor

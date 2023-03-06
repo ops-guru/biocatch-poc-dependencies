@@ -8,13 +8,13 @@ spec:
     serviceAccountRef:
       name: {{ include "crossplane-templates.fullname" . }}
     policy:
-      {{- with .Values.bindings }}
       bindings:
-        {{- if .Values.workloadIdentity }}
+      {{- if .Values.workloadIdentity }}
         - role: roles/iam.workloadIdentityUser
           members:
             - serviceAccount:{{ .Values.workloadIdentity.project }}.svc.id.goog[{{ .Values.workloadIdentity.namespace }}/{{ .Values.workloadIdentity.serviceAccount }}]
-        {{- end }}
+      {{- end }}
+      {{- with .Values.bindings }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
   providerConfigRef:

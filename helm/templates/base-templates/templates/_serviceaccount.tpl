@@ -3,8 +3,8 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "base-templates.serviceAccountName" . }}
-  namespace: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
+  namespace: {{ include "base-templates.fullname" . }}
   {{- if or .Values.commonLabels .Values.serviceAccount.labels }}
   labels:
     {{- if .Values.commonLabels }}

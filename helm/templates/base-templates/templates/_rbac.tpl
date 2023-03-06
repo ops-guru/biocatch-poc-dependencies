@@ -2,14 +2,14 @@
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "base-templates.serviceAccountName" . }}
-  namespace: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
+  namespace: {{ include "base-templates.fullname" . }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  name: {{ include "base-templates.serviceAccountName" . }}
-  namespace: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
+  namespace: {{ include "base-templates.fullname" . }}
 rules:
 - apiGroups: ["sparkoperator.k8s.io"]
   resources: ["sparkapplications", "sparkapplications/status", "scheduledsparkapplications", "scheduledsparkapplications/status"]
@@ -71,14 +71,14 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "base-templates.serviceAccountName" . }}
-  namespace: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
+  namespace: {{ include "base-templates.fullname" . }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
-  name: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "base-templates.serviceAccountName" . }}
-  namespace: {{ include "base-templates.serviceAccountName" . }}
+  name: {{ include "base-templates.fullname" . }}
+  namespace: {{ include "base-templates.fullname" . }}
 {{- end -}}

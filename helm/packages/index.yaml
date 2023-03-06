@@ -3,13 +3,13 @@ entries:
   base-resources:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-06T15:03:13.0257525Z"
+    created: "2023-03-06T15:03:17.802900308Z"
     dependencies:
     - name: base-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
     description: A Helm chart for Base Resources
-    digest: e0c087d9fa7661b2e6d31a782313cdfdd51c857caacc464ec091e39372341621
+    digest: 4e150a4218fe1e992bc771768a6902062b49f758d09851cf1db0c86b70631f6c
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -20,7 +20,7 @@ entries:
     version: 0.0.1
   base-templates:
   - apiVersion: v2
-    created: "2023-03-06T15:03:13.026441007Z"
+    created: "2023-03-06T15:03:17.803721008Z"
     description: A Helm chart for Kubernetes templates
     digest: 6fc6e9731fee329eaaee66d00ba1a6934c3f7441b100efb16c5b374aa9a7f184
     maintainers:
@@ -34,13 +34,13 @@ entries:
   crossplane-service-account:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-06T15:03:13.027118113Z"
+    created: "2023-03-06T15:03:17.804498808Z"
     dependencies:
     - name: crossplane-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
     description: A Helm chart for Crossplane Service Account
-    digest: 5782d449bfe2686a7fb26c062ef6f5ec30c6f3211c11b841b205eb22b2edf79a
+    digest: f879cc35e47ac0c7ef10c1c9bac863eed863ea511535e0691afe29d43737ef7d
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -53,7 +53,7 @@ entries:
     version: 0.0.1
   crossplane-templates:
   - apiVersion: v2
-    created: "2023-03-06T15:03:13.027446516Z"
+    created: "2023-03-06T15:03:17.804876608Z"
     description: A Helm chart for Kubernetes templates
     digest: bdebfdd8d9f4d77ce9dbd462e39a33a664752102948e536b4a289176109590fc
     maintainers:
@@ -69,13 +69,13 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-06T15:03:13.02895723Z"
+    created: "2023-03-06T15:03:17.806588108Z"
     dependencies:
     - name: spark-templates
       repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
       version: 0.x.x
     description: A Helm chart for SparkApplication CRD
-    digest: f983d3ce5fe60d8da848c3023916e5cd99c47e4064f304258c79dc89c81b94f7
+    digest: 4be1c706f51d1387f7ed5690699901737d8e18d78d0e5ac5cb7298ed60b0bc13
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -89,9 +89,9 @@ entries:
   spark-history-server:
   - apiVersion: v1
     appVersion: 2.4.0
-    created: "2023-03-06T15:03:13.030649845Z"
+    created: "2023-03-06T15:03:17.808284308Z"
     description: A Helm chart for Spark History Server
-    digest: 8b2a5ddfe8e4c7dbc7f0d72daef39771794ebed796c45d50e4c0654d1abcff22
+    digest: de1edb8a9351449eb91f26dfdd17b3f34e7bfc7a37b22eed64863f72e83c62d3
     home: https://spark.apache.org
     keywords:
     - spark
@@ -109,9 +109,9 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-06T15:03:13.033423671Z"
+    created: "2023-03-06T15:03:17.810449008Z"
     description: A Helm chart for Spark on Kubernetes operator
-    digest: 1e9fca64ce5d4b560ad8fb4f01bbe3c5ab318f10448cfff6afe6ef21c52a07cf
+    digest: 4d4c5b348ec5ccae40c203db5d2ef60eeda82d1365d15ff2fc7d98cb1e28703d
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
     keywords:
     - spark
@@ -126,7 +126,7 @@ entries:
     version: 1.1.26-og-0.0.1
   spark-templates:
   - apiVersion: v2
-    created: "2023-03-06T15:03:13.034846584Z"
+    created: "2023-03-06T15:03:17.811911408Z"
     description: A Helm chart for Kubernetes templates
     digest: 08421ce4b4cdcc3e629c770219dc9ad5f327deeda5049ff5d65738b4f319476f
     maintainers:
@@ -139,4 +139,4 @@ entries:
     urls:
     - spark-templates-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-06T15:03:13.023133676Z"
+generated: "2023-03-06T15:03:17.799282808Z"

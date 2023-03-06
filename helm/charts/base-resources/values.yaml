@@ -1,0 +1,11 @@
+# -- String to partially override template (will maintain the release name)
+nameOverride: ""
+
+# -- String to override release name
+fullnameOverride: ""
+
+# -- Add labels to all the deployed resources
+commonLabels: {}
+
+# -- Add annotations to all the deployed resources
+commonAnnotations: {}

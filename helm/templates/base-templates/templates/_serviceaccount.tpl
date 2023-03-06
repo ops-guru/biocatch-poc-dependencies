@@ -1,0 +1,28 @@
+{{- define "base-templates.serviceAccount" -}}
+{{- if (.Values.serviceAccount).create -}}
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "base-templates.serviceAccountName" . }}
+  namespace: {{ include "base-templates.serviceAccountName" . }}
+  {{- if or .Values.commonLabels .Values.serviceAccount.labels }}
+  labels:
+    {{- if .Values.commonLabels }}
+    {{- toYaml .Values.commonLabels | nindent 4 }}
+    {{- end }}
+    {{- if .Values.serviceAccount.labels }}
+    {{- toYaml .Values.serviceAccount.labels | nindent 4 }}
+    {{- end }}
+  {{- end }}
+  {{- if or .Values.commonAnnotations .Values.serviceAccount.annotations }}
+  annotations:
+    {{- if .Values.commonAnnotations }}
+    {{- toYaml .Values.commonAnnotations | nindent 4 }}
+    {{- end }}
+    {{- if .Values.serviceAccount.annotations }}
+    {{- toYaml .Values.serviceAccount.annotations | nindent 4 }}
+    {{- end }}
+  {{- end }}
+automountServiceAccountToken: {{ .Values.serviceAccount.automountServiceAccountToken }}
+{{- end -}}
+{{- end -}}

@@ -12,3 +12,9 @@ providerConfigName: ""
 
 # -- Service Account Policy bindings
 bindings: {}
+
+# -- Workload Identity parameters
+workloadIdentity:
+  project: ""
+  namespace: default
+  serviceAccount: default

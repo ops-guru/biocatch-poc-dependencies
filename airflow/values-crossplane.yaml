@@ -1,6 +1,6 @@
 deletionPolicy: Delete
 providerConfigName: provider-config-gcp
-bindings:
-  - role: roles/iam.workloadIdentityUser
-    members:
-      - serviceAccount:artur-bolt-development.svc.id.goog[spark-operator/crossplane-airflow]
+#bindings:
+#  - role: roles/iam.workloadIdentityUser
+#    members:
+#      - serviceAccount:artur-bolt-development.svc.id.goog[spark-operator/crossplane-airflow]

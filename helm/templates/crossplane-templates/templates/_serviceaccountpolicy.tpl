@@ -10,6 +10,11 @@ spec:
     policy:
       {{- with .Values.bindings }}
       bindings:
+        {{- if .Values.workloadIdentity }}
+        - role: roles/iam.workloadIdentityUser
+          members:
+            - serviceAccount:{{ .Values.workloadIdentity.project }}.svc.id.goog[{{ .Values.workloadIdentity.namespace }}/{{ .Values.workloadIdentity.serviceAccount }}]
+        {{- end }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
   providerConfigRef:

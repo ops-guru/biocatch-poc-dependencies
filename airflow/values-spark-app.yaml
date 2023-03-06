@@ -50,9 +50,9 @@ sparkUIOptions:
   ingressAnnotations:
     kubernetes.io/ingress.class: kong
 serviceAccount:
-  create: true
-  annotations:
-    iam.gke.io/gcp-service-account: crossplane-airflow@artur-bolt-development.iam.gserviceaccount.com
+  create: false
+#  annotations:
+#    iam.gke.io/gcp-service-account: crossplane-airflow@artur-bolt-development.iam.gserviceaccount.com
 rbac:
   create: true
   clusterWideAccess: true

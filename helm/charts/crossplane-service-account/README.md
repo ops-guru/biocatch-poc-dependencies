@@ -12,7 +12,8 @@ A Helm chart for Crossplane Service Account templates
 
 ## Source Code
 
-* <https://doc.crds.dev/github.com/crossplane/provider-gcp>
+* <https://github.com/upbound/provider-gcp>
+* <https://marketplace.upbound.io/providers>
 
 ## Values
 

@@ -5,7 +5,8 @@ name: crossplane-service-account
 type: application
 version: 0.0.1
 sources:
-  - https://doc.crds.dev/github.com/crossplane/provider-gcp
+  - https://github.com/upbound/provider-gcp
+  - https://marketplace.upbound.io/providers
 maintainers:
   - email: artur@opsguru.io
     name: artur-bolt

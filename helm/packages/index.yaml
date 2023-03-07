@@ -3,9 +3,9 @@ entries:
   base-templates:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-07T08:10:59.58948415Z"
+    created: "2023-03-07T11:42:22.644867878Z"
     description: A Helm chart for Kubernetes templates
-    digest: cfaf6cd5d0eca16fafb9aa3e50b71e356dd218b4cac308d392fb176a51393ad1
+    digest: cbad64e799d8f6b832755635ba53e0bacf2a8a501a63d1fb7fbca7324a485890
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -17,9 +17,9 @@ entries:
   crossplane-service-account:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-07T08:10:59.589856852Z"
+    created: "2023-03-07T11:42:22.64529778Z"
     description: A Helm chart for Crossplane Service Account templates
-    digest: 2f18e9f7fc8848f77f0003a3e0b11b257e8e98e05990ffebe55cd3d58771c2d9
+    digest: c1f5dadbafc5ee0bc3aaf75e4ae52ad30fb5c2cfcf532602f3eae563616c9c78
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -33,9 +33,9 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-07T08:10:59.591271762Z"
+    created: "2023-03-07T11:42:22.646093985Z"
     description: A Helm chart for Spark Application templates
-    digest: 44fbd7cee56e9359f8248bdb9b112ef13fe599e35b4a26cc3f55c311ce101c65
+    digest: 03fc45e3a5b34c328d765d8a160934c7983d1f08e293ab4d7461b8f58ac20d91
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -49,9 +49,9 @@ entries:
   spark-history-server:
   - apiVersion: v1
     appVersion: 2.4.0
-    created: "2023-03-07T08:10:59.592996674Z"
+    created: "2023-03-07T11:42:22.647598993Z"
     description: A Helm chart for Spark History Server
-    digest: e5f90ac97019924080b4b3996c7443c24d4f8ab0a383daa1c09ea436353c332d
+    digest: 4dd2c7c1a8e15434d3ae372aae72e342e14e62c7351175e430b752ca3c633dd9
     home: https://spark.apache.org
     keywords:
     - spark
@@ -69,9 +69,9 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-07T08:10:59.595132389Z"
+    created: "2023-03-07T11:42:22.649485304Z"
     description: A Helm chart for Spark on Kubernetes operator
-    digest: 0bdf729ba78f06578002fcaae3479bad65e7d70c46692b01afeb9d00ed3e11ce
+    digest: f994e9330e41d4b6aa95cf7f1f7c1cb211a366ee08eb41784dfe1936afa4342f
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
     keywords:
     - spark
@@ -84,4 +84,4 @@ entries:
     urls:
     - spark-operator-1.1.26-og-0.0.1.tgz
     version: 1.1.26-og-0.0.1
-generated: "2023-03-07T08:10:59.587851638Z"
+generated: "2023-03-07T11:42:22.644367075Z"

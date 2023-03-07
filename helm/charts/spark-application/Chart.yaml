@@ -1,10 +1,6 @@
 apiVersion: v2
 appVersion: 1.0.0
-dependencies:
-  - name: spark-templates
-    repository: https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/
-    version: 0.x.x
-description: A Helm chart for SparkApplication CRD
+description: A Helm chart for Spark Application templates
 name: spark-application
 type: application
 version: 0.0.1

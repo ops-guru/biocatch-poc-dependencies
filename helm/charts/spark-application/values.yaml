@@ -9,6 +9,7 @@ templateType: application
 
 # -- Add labels to all the deployed resources
 commonLabels: {}
+
 # -- Add annotations to all the deployed resources
 commonAnnotations: {}
 
@@ -153,7 +154,7 @@ template: {}
 # -- Role Based Access
 # Ref: https://kubernetes.io/docs/admin/authorization/rbac/
 rbac:
-  create: true
+  create: false
   # -- Create Role or RoleBinding
   clusterWideAccess: true
   # -- Additional rbac rules
@@ -163,7 +164,7 @@ rbac:
 # ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 serviceAccount:
   # -- Enable creation of ServiceAccount for pods
-  create: true
+  create: false
   # -- The name of the ServiceAccount to use.
   # -- If not set and create is true, a driver.serviceAccount is used. If not set as well, a chart name is used
   name: ""

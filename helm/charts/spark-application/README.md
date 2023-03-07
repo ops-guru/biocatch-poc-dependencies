@@ -2,23 +2,17 @@
 
 ![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
-A Helm chart for SparkApplication CRD
+A Helm chart for Kubernetes templates
 
 ## Maintainers
 
 | Name | Email | Url |
 | ---- | ------ | --- |
-|  | <artur@opsguru.io> |  |
+| artur-bolt | <artur@opsguru.io> |  |
 
 ## Source Code
 
 * <https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/api-docs.md>
-
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ | spark-templates | 0.x.x |
 
 ## Values
 
@@ -54,16 +48,16 @@ A Helm chart for SparkApplication CRD
 | nodeSelector | Optional | `{}` | NodeSelector is the Kubernetes node selector to be added to the driver and executor pods. This field is mutually exclusive with nodeSelector at podSpec level (driver or executor). This field will be deprecated in future versions (at SparkApplicationSpec level). |
 | proxyUser | Optional | `""` | ProxyUser specifies the user to impersonate when submitting the application. It maps to the command-line flag “–proxy-user” in spark-submit. |
 | pythonVersion | Optional | `""` | This sets the major Python version of the docker image used to run the driver and executor containers. Can either be 2 or 3, default 2. |
-| rbac | object | `{"clusterWideAccess":true,"create":true,"rules":[]}` | Ref: https://kubernetes.io/docs/admin/authorization/rbac/ |
+| rbac | object | `{"clusterWideAccess":true,"create":false,"rules":[]}` | Role Based Access Ref: https://kubernetes.io/docs/admin/authorization/rbac/ |
 | rbac.clusterWideAccess | bool | `true` | Create Role or RoleBinding |
 | rbac.rules | list | `[]` | Additional rbac rules |
 | restartPolicy | object | `{}` | RestartPolicy defines the policy on if and in which conditions the controller should restart an application. https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/api-docs.md#sparkoperator.k8s.io/v1beta2.RestartPolicy |
 | retryInterval | Optional | `""` | RetryInterval is the unit of intervals in seconds between submission retries. |
 | schedule | string | `""` | Schedule is a cron schedule on which the application should run. |
-| serviceAccount | object | `{"annotations":{},"automountServiceAccountToken":true,"create":true,"name":""}` | ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ |
+| serviceAccount | object | `{"annotations":{},"automountServiceAccountToken":true,"create":false,"name":""}` | Service account for pods to use ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ |
 | serviceAccount.annotations | object | `{}` | Additional custom annotations for the ServiceAccount |
 | serviceAccount.automountServiceAccountToken | bool | `true` | Can be set to false if pods using this serviceAccount do not need to use K8s API |
-| serviceAccount.create | bool | `true` | Enable creation of ServiceAccount for pods |
+| serviceAccount.create | bool | `false` | Enable creation of ServiceAccount for pods |
 | serviceAccount.name | string | `""` | If not set and create is true, a driver.serviceAccount is used. If not set as well, a chart name is used |
 | sparkConf | Optional | `{}` | SparkConf carries user-specified Spark configuration properties as they would use the “–conf” option in spark-submit. |
 | sparkConfigMap | Optional | `""` | SparkConfigMap carries the name of the ConfigMap containing Spark configuration files such as log4j.properties. The controller will add environment variable SPARK_CONF_DIR to the path where the ConfigMap is mounted to. |

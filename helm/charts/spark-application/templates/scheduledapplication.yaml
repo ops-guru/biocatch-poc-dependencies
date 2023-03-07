@@ -1,1 +1,37 @@
-{{- template "spark-templates.scheduledApplication" . -}}
+{{- if eq .Values.templateType "scheduled" -}}
+apiVersion: sparkoperator.k8s.io/v1beta2
+kind: ScheduledSparkApplication
+metadata:
+  name: {{ include "spark-templates.fullname" . }}
+  {{- if or .Values.commonLabels .Values.labels }}
+  labels:
+    {{- if .Values.commonLabels }}
+    {{- toYaml .Values.commonLabels | nindent 4 }}
+    {{- end }}
+    {{- if .Values.labels }}
+    {{- toYaml .Values.labels | nindent 4 }}
+    {{- end }}
+  {{- end }}
+  {{- if or .Values.commonAnnotations .Values.annotations }}
+  annotations:
+    {{- if .Values.commonAnnotations }}
+    {{- toYaml .Values.commonAnnotations | nindent 4 }}
+    {{- end }}
+    {{- if .Values.annotations }}
+    {{- toYaml .Values.annotations | nindent 4 }}
+    {{- end }}
+  {{- end }}
+spec:
+  schedule: {{ .Values.schedule | quote }}
+  {{- if .Values.suspend }}
+  suspend: {{ .Values.suspend | default false }}
+  {{- end }}
+  concurrencyPolicy: {{ .Values.concurrencyPolicy }}
+  {{- if .Values.successfulRunHistoryLimit }}
+  successfulRunHistoryLimit: {{ .Values.successfulRunHistoryLimit | default 1 }}
+  {{- end }}
+  {{- if .Values.failedRunHistoryLimit }}
+  failedRunHistoryLimit: {{ .Values.failedRunHistoryLimit | default 1 }}
+  {{- end }}
+  template: {{- toYaml .Values.template | nindent 4 }}
+{{- end }}

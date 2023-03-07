@@ -2,7 +2,7 @@
 
 ![Version: 0.0.1](https://img.shields.io/badge/Version-0.0.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.0.0](https://img.shields.io/badge/AppVersion-1.0.0-informational?style=flat-square)
 
-A Helm chart for SparkApplication CRD
+A Helm chart for Crossplane Service Account
 
 ## Maintainers
 
@@ -13,12 +13,6 @@ A Helm chart for SparkApplication CRD
 ## Source Code
 
 * <https://doc.crds.dev/github.com/crossplane/provider-gcp>
-
-## Requirements
-
-| Repository | Name | Version |
-|------------|------|---------|
-| https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ | crossplane-templates | 0.x.x |
 
 ## Values
 

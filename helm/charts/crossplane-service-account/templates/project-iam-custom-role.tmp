@@ -1,0 +1,20 @@
+apiVersion: cloudplatform.gcp.upbound.io/v1beta1
+kind: ProjectIAMCustomRole
+metadata:
+  annotations:
+    meta.upbound.io/example-id: cloudplatform/v1beta1/projectiamcustomrole
+  labels:
+    testing.upbound.io/example-name: up-demo-sa-test
+  name: updemosatest
+spec:
+  forProvider:
+    description: up-demo-sa-test
+    permissions:
+      - storage.buckets.create
+      - storage.buckets.delete
+      - storage.buckets.get
+      - storage.buckets.list
+    title: {{ include "crossplane-service-account.fullname" . }}
+  deletionPolicy: {{ .Values.deletionPolicy }}
+  providerConfigRef:
+    name: {{ .Values.providerConfigName }}

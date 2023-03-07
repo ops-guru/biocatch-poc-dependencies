@@ -10,5 +10,13 @@ deletionPolicy: Delete
 # -- Name of the Provider config
 providerConfigName: ""
 
-# -- Service Account Policy bindings
-bindings: {}
+workloadIdentity:
+  # -- Target GCP project
+  project: ""
+  # -- Workload identity K8s namespace
+  namespace: default
+  # -- Workload identity K8s service account
+  serviceAccount: default
+
+# -- Service Account role assignment
+role: ""

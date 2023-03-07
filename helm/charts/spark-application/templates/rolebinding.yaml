@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: {{ include "spark-templates.fullname" . }}
+  name: {{ include "spark-application.fullname" . }}
   namespace: {{ .Release.Name }}
   {{- if or .Values.commonLabels .Values.rbac.labels }}
   labels:
@@ -24,10 +24,10 @@ metadata:
   {{- end }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "spark-templates.serviceAccountName" . }}
+  name: {{ include "spark-application.serviceAccountName" . }}
   namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
-  name: {{ include "spark-templates.fullname" . }}
+  name: {{ include "spark-application.fullname" . }}
   apiGroup: rbac.authorization.k8s.io
 {{- end -}}

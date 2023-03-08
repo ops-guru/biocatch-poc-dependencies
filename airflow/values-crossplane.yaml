@@ -1,2 +1,3 @@
 deletionPolicy: Delete
+provider: crossplane
 providerConfigName: provider-config-gcp

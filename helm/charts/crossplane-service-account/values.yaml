@@ -7,6 +7,9 @@ fullnameOverride: ""
 # -- Deletion policy for the resources
 deletionPolicy: Delete
 
+# -- Name of the Provider: upbound / crossplane
+provider: ""
+
 # -- Name of the Provider config
 providerConfigName: ""
 

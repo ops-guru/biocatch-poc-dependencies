@@ -22,6 +22,7 @@ A Helm chart for Crossplane Service Account templates
 | deletionPolicy | string | `"Delete"` | Deletion policy for the resources |
 | fullnameOverride | string | `""` | String to override release name |
 | nameOverride | string | `""` | String to partially override template (will maintain the release name) |
+| provider | string | `""` | Name of the Provider: upbound / crossplane |
 | providerConfigName | string | `""` | Name of the Provider config |
 | role | string | `""` | Service Account role assignment |
 | workloadIdentity.namespace | string | `"default"` | Workload identity K8s namespace |

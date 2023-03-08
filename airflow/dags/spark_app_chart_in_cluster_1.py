@@ -7,7 +7,7 @@ from airflow.models import Variable
 now = datetime.now()
 
 default_args = {
-    "owner": "k8s-kubectl",
+    "owner": "spark",
     "depends_on_past": False,
     "start_date": days_ago(1),
     "email": ["airflow@airflow.com"],

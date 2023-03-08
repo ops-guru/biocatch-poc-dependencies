@@ -1,3 +1,4 @@
+{{- if eq .Values.provider "upbound" -}}
 apiVersion: cloudplatform.gcp.upbound.io/v1beta1
 kind: ProjectIAMMember
 metadata:
@@ -14,3 +15,4 @@ spec:
   deletionPolicy: {{ .Values.deletionPolicy }}
   providerConfigRef:
     name: {{ .Values.providerConfigName }}
+{{- end }}

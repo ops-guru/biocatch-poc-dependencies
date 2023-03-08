@@ -24,19 +24,20 @@ dag = DAG(
 )
 
 gcp_project_name="artur-bolt-development"
-Variable.set("gcp_project_name", gcp_project_name)
+#Variable.set("gcp_project_name", gcp_project_name)
 
 crossplane_sa_name="spark-applications"
-Variable.set("crossplane_sa_name", crossplane_sa_name)
+#Variable.set("crossplane_sa_name", crossplane_sa_name)
 
 crossplane_sa_namespace="spark-applications"
-Variable.set("crossplane_sa_namespace", crossplane_sa_namespace)
+#Variable.set("crossplane_sa_namespace", crossplane_sa_namespace)
 
 start_crossplane_pod = KubernetesPodOperator(
     task_id="deploy_helm_crossplane_pod",
     namespace=crossplane_sa_namespace,
     image="alpine/helm",
-    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i crossplane-{{ var.value.crossplane_sa_name }} poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_sa_name }} --set-string workloadIdentity.project={{ var.value.gcp_project_name }} --set-string workloadIdentity.namespace={{ var.value.crossplane_sa_namespace }} --set-string workloadIdentity.serviceAccount={{ var.value.crossplane_sa_name }} --set-string role=roles/storage.admin'],
+    cmds=['/bin/sh', '-c', 'echo {crossplane_sa_name} {gcp_project_name}'],
+          #'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i crossplane-{{ var.value.crossplane_sa_name }} poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_sa_name }} --set-string workloadIdentity.project={{ var.value.gcp_project_name }} --set-string workloadIdentity.namespace={{ var.value.crossplane_sa_namespace }} --set-string workloadIdentity.serviceAccount={{ var.value.crossplane_sa_name }} --set-string role=roles/storage.admin'],
     service_account_name="helm-access",
     do_xcom_push=False,
     is_delete_operator_pod=True,

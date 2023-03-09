@@ -183,6 +183,12 @@ leaderElection:
   lockName: "spark-operator-lock"
   # -- Optionally store the lock in another namespace. Defaults to operator's namespace
   lockNamespace: ""
+  # -- Leader election lease duration.
+  leaseDuration: 15s
+  # -- Leader election renew deadline.
+  renewDeadline: 14s
+  # -- Leader election retry period.
+  retryPeriod: 4s
 
 istio:
   # -- When using `istio`, spark jobs need to run without a sidecar to properly terminate

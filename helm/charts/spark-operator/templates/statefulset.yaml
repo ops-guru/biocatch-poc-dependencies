@@ -86,6 +86,9 @@ spec:
         - -leader-election=true
         - -leader-election-lock-namespace={{ default .Release.Namespace .Values.leaderElection.lockNamespace }}
         - -leader-election-lock-name={{ .Values.leaderElection.lockName }}
+        - -leader-election-lease-duration={{ .Values.leaderElection.leaseDuration }}
+        - -leader-election-renew-deadline={{ .Values.leaderElection.renewDeadline }}
+        - -leader-election-retry-period={{ .Values.leaderElection.retryPeriod }}
         resources:
           {{- toYaml .Values.resources | nindent 10 }}
         {{- if or .Values.webhook.enable (ne (len .Values.volumeMounts) 0 ) }}

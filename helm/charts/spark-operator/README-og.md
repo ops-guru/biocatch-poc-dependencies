@@ -13,9 +13,6 @@ Copied from deployment yaml, changed:
 - -leader-election=true
 - -leader-election-lock-namespace={{ default .Release.Namespace .Values.leaderElection.lockNamespace }}
 - -leader-election-lock-name={{ .Values.leaderElection.lockName }}
-- -leader-election-lease-duration={{ .Values.leaderElection.leaseDuration }}
-- -leader-election-renew-deadline={{ .Values.leaderElection.renewDeadline }}
-- -leader-election-retry-period={{ .Values.leaderElection.retryPeriod }}
 ```
 
 ### hpa.yaml
@@ -31,13 +28,6 @@ Copied from deployment yaml, changed:
 {{- if eq .Values.kind "deployment" }}
 ...
 {{- end }}
-```
-
-### Added additional leader election parameters
-```
-- -leader-election-lease-duration={{ .Values.leaderElection.leaseDuration }}
-- -leader-election-renew-deadline={{ .Values.leaderElection.renewDeadline }}
-- -leader-election-retry-period={{ .Values.leaderElection.retryPeriod }}
 ```
 
 ### Added additional argument

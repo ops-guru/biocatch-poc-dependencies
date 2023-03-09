@@ -17,10 +17,10 @@ default_args = {
     'retries': 0
 }
 dag = DAG(
-    dag_id='spark_app_chart_in_cluster_1',
+    dag_id='spark_app_1',
     default_args=default_args,
     schedule_interval=timedelta(days=1),
-    tags=['pod','inside','bitnami']
+    tags=['pod','spark']
 )
 
 spark_app_name="airflow-pod-poc-01"

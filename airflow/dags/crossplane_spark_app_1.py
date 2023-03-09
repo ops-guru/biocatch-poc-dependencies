@@ -17,10 +17,10 @@ default_args = {
     'retries': 0
 }
 dag = DAG(
-    dag_id='spark_crossplane_app_chart_in_cluster_1',
+    dag_id='crossplane_spark_app_1',
     default_args=default_args,
     schedule_interval=timedelta(days=1),
-    tags=['pod','inside','bitnami','crossplane']
+    tags=['pod','spark','crossplane']
 )
 
 gcp_project_name="artur-bolt-development"

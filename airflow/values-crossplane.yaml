@@ -1,3 +1,6 @@
 deletionPolicy: Delete
 provider: crossplane
 providerConfigName: provider-config-gcp
+serviceAccount: crossplane-system
+roles:
+  - roles/storage.admin

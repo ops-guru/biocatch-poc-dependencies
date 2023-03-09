@@ -22,10 +22,13 @@ workloadIdentity:
   serviceAccount: default
 
 # -- Service Account role assignment
-role: ""
+roles: []
 
+# -- Service Account for K8s job, should have access to gcloud resources. Can be the same used by crossplane-system
+serviceAccount: ""
 
-webhook:
-  image:
-    repository: google/cloud-sdk
-    tag: ""
+image:
+  # -- Image repository
+  repository: google/cloud-sdk
+  # -- Image tag
+  tag: slim

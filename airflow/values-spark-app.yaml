@@ -1,5 +1,5 @@
 templateType: application
-name: lifecycle-airflow-pod-operator
+name: spark-app
 type: Scala
 mode: cluster
 image: "gcr.io/spark-operator/spark:v3.1.1"
@@ -16,7 +16,7 @@ driver:
   memory: "512m"
   labels:
     version: 3.1.1
-  serviceAccount: lifecycle-airflow-dag-app-poc
+  serviceAccount: spark-app
   terminationGracePeriodSeconds: 60
   affinity:
     nodeAffinity:
@@ -33,7 +33,7 @@ executor:
   memory: "512m"
   labels:
     version: 3.1.1
-  serviceAccount: lifecycle-airflow-dag-app-poc
+  serviceAccount: spark-app
   terminationGracePeriodSeconds: 60
   affinity:
     nodeAffinity:
@@ -49,8 +49,3 @@ sparkConfigMap: configmap-spark-config
 sparkUIOptions:
   ingressAnnotations:
     kubernetes.io/ingress.class: kong
-serviceAccount:
-  create: false
-rbac:
-  create: true
-  clusterWideAccess: true

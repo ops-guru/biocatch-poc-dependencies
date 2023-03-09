@@ -52,5 +52,5 @@ sparkUIOptions:
 serviceAccount:
   create: false
 rbac:
-  create: false
+  create: true
   clusterWideAccess: true

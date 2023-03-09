@@ -36,7 +36,7 @@ start_crossplane_pod = KubernetesPodOperator(
     task_id="deploy_helm_crossplane_pod",
     namespace="crossplane-system",
     image="alpine/helm",
-    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.crossplane_app_name }}-crs poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_app_name }} --set-string workloadIdentity.project={{ var.value.gcp_project_name }} --set-string workloadIdentity.namespace={{ var.value.crossplane_app_namespace }} --set-string workloadIdentity.serviceAccount={{ var.value.crossplane_app_name }} --set-string roles=[roles/storage.admin]'],
+    cmds=['/bin/sh', '-c', 'helm repo add poc https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/helm/packages/ && helm repo update && helm upgrade -i {{ var.value.crossplane_app_name }}-crs poc/crossplane-service-account --atomic --debug -f https://raw.githubusercontent.com/ops-guru/biocatch-poc-dependencies/main/airflow/values-crossplane.yaml --set-string fullnameOverride={{ var.value.crossplane_app_name }} --set-string workloadIdentity.project={{ var.value.gcp_project_name }} --set-string workloadIdentity.namespace={{ var.value.crossplane_app_namespace }} --set-string workloadIdentity.serviceAccount={{ var.value.crossplane_app_name }}'],
     service_account_name="helm-crossplane-system",
     do_xcom_push=False,
     is_delete_operator_pod=True,

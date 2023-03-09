@@ -27,6 +27,13 @@ roles: []
 # -- Service Account for K8s job, should have access to gcloud resources. Can be the same used by crossplane-system
 serviceAccount: ""
 
+initContainer:
+  image:
+    # -- Image repository for init container
+    repository: bitnami/kubectl
+    # -- Image tag for init container
+    tag: latest
+
 image:
   # -- Image repository
   repository: google/cloud-sdk

@@ -21,10 +21,15 @@ A Helm chart for Crossplane Service Account templates
 |-----|------|---------|-------------|
 | deletionPolicy | string | `"Delete"` | Deletion policy for the resources |
 | fullnameOverride | string | `""` | String to override release name |
+| image.repository | string | `"google/cloud-sdk"` | Image repository |
+| image.tag | string | `"slim"` | Image tag |
+| initContainer.image.repository | string | `"bitnami/kubectl"` | Image repository for init container |
+| initContainer.image.tag | string | `"latest"` | Image tag for init container |
 | nameOverride | string | `""` | String to partially override template (will maintain the release name) |
 | provider | string | `""` | Name of the Provider: upbound / crossplane |
 | providerConfigName | string | `""` | Name of the Provider config |
-| role | string | `""` | Service Account role assignment |
+| roles | list | `[]` | Service Account role assignment |
+| serviceAccount | string | `""` | Service Account for K8s job, should have access to gcloud resources. Can be the same used by crossplane-system |
 | workloadIdentity.namespace | string | `"default"` | Workload identity K8s namespace |
 | workloadIdentity.project | string | `""` | Target GCP project |
 | workloadIdentity.serviceAccount | string | `"default"` | Workload identity K8s service account |

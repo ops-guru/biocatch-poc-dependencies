@@ -24,14 +24,11 @@ metadata:
   {{- end }}
 rules:
 - apiGroups: [""]
-  resources: ["pods"]
+  resources: ["pods", "configmaps", "services"]
   verbs: ["get", "watch", "list", "create", "delete", "patch"]
-- apiGroups: [""]
-  resources: ["services"]
-  verbs: ["get", "create", "delete"]
-- apiGroups: [""]
-  resources: ["configmaps"]
-  verbs: ["get", "create", "list", "delete"]
+- apiGroups: ["extensions", "networking.k8s.io"]
+  resources: ["ingresses" ]
+  verbs: ["get", "watch", "list", "create", "delete", "patch"]
 {{- if .Values.rbac.rules }}
 {{- toYaml .Values.rbac.rules | nindent 4 }}
 {{- end }}

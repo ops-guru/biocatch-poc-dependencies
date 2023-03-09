@@ -1,10 +1,7 @@
 # Airflow DAGs
 
-`spark_operator_in_cluster_1.py` - shows the usage of SparkKubernetesOperator Airflow provider which constructs SparkApplication CRD.
-- Make sure that service account for the application exists in the target namespace.
+`crossplane_sa_1.py` - deploys crossplane GCP SA, new namespace and GKE SA the namespace with it
 
-`spark_app_chart_in_cluster_1.py` - shows the usage of KubernetesPodOperator Airflow provider which uses `spark-application` helm chart installed from a K8s pod.
-- Make sure that app is being deployed in the same namespace where `service_account_name` specified in DAG is located.
+`crossplane_spark_app_1.py` - deploys crossplane GCP SA, new namespace, GKE SA and spark app in the namespace with it
 
-`spark_crossplane_app_chart_in_cluster_1.py` - shows the usage of 2 KubernetesPodOperators Airflow providers, which use `crossplane-service-account` and `spark-application` helm charts installed from a K8s pod.
-- Make sure that app is being deployed in the same namespace where `service_account_name` specified in DAG is located.
+`spark_app_1.py` - deploys spark application into target namespace

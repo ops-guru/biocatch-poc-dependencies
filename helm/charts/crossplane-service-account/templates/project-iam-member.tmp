@@ -9,7 +9,7 @@ metadata:
   name: {{ include "crossplane-service-account.fullname" . }}
 spec:
   forProvider:
-    member: serviceAccount:{{ include "crossplane-service-account.fullname" . }}@artur-bolt-development.iam.gserviceaccount.com
+    member: serviceAccount:{{ include "crossplane-service-account.fullname" . }}@{{ .Values.workloadIdentity.project }}.iam.gserviceaccount.com
     project: {{ .Values.workloadIdentity.project }}
     role: {{ .Values.role }}
   deletionPolicy: {{ .Values.deletionPolicy }}

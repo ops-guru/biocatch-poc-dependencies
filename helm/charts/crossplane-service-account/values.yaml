@@ -23,3 +23,9 @@ workloadIdentity:
 
 # -- Service Account role assignment
 role: ""
+
+
+webhook:
+  image:
+    repository: google/cloud-sdk
+    tag: ""

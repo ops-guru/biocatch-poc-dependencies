@@ -88,10 +88,7 @@ topologySpreadConstraints:
   resourceNames:
   - {{ .Values.leaderElection.lockName }}
   verbs:
-  - get
-  - update
-  - patch
-  - delete
+  - "*"
 - apiGroups:
   - coordination.k8s.io
   resources:

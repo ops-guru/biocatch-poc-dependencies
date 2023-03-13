@@ -8,7 +8,7 @@ fullnameOverride: ""
 deletionPolicy: Delete
 
 # -- Name of the Provider: upbound / crossplane
-provider: ""
+provider: crossplane
 
 # -- Name of the Provider config
 providerConfigName: ""

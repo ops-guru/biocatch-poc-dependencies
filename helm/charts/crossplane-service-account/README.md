@@ -26,7 +26,7 @@ A Helm chart for Crossplane Service Account templates
 | initContainer.image.repository | string | `"bitnami/kubectl"` | Image repository for init container |
 | initContainer.image.tag | string | `"latest"` | Image tag for init container |
 | nameOverride | string | `""` | String to partially override template (will maintain the release name) |
-| provider | string | `""` | Name of the Provider: upbound / crossplane |
+| provider | string | `"crossplane"` | Name of the Provider: upbound / crossplane |
 | providerConfigName | string | `""` | Name of the Provider config |
 | roles | list | `[]` | Service Account role assignment |
 | serviceAccount | string | `""` | Service Account for K8s job, should have access to gcloud resources. Can be the same used by crossplane-system |

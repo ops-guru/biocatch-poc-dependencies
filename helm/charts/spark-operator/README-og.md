@@ -1,5 +1,9 @@
 # Changes to spark-operator
 
+**Known issues:**
+- If port 443 for webhook is used, GKE would not mount volumes and configmaps to pods (https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/1103)
+- Issue with leader election and helm upgrade (https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/1554 , https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/pull/1624/files). Possible fix for now, remove pre-upgrade on service account
+
 ## New files: `statefulset.yaml`, `hpa.yaml`
 
 ### statefulset.yaml
@@ -101,8 +105,8 @@ topologySpreadConstraints:
 ## serviceaccount.yaml
 
 ### Removed pre-upgrade helm.sh/hook as a temporary fix for leader election error when Service Account is not refreshed and helm uprgade is made
-### https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/1554
-### https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/pull/1624/files
+#### - https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/issues/1554
+#### - https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/pull/1624/files
 ```
   annotations:
     "helm.sh/hook": pre-install

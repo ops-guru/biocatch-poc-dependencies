@@ -3,9 +3,9 @@ entries:
   crossplane-service-account:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-10T14:22:49.977658188Z"
+    created: "2023-03-13T11:23:57.695158181Z"
     description: A Helm chart for Crossplane Service Account templates
-    digest: e3f80ca2eac6f335bd1d7417eb3f98daa5fe8a97aa08622eeca3a5cf195939e5
+    digest: 0b88ab180e1e668a35227359621044c5066b03ad8f52cba06f683460d2c8608d
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -20,9 +20,9 @@ entries:
   spark-application:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2023-03-10T14:22:49.978379195Z"
+    created: "2023-03-13T11:23:57.696350804Z"
     description: A Helm chart for Spark Application templates
-    digest: e692b025ad6971b33e52cd8762ecaa0d5befc0d591d6951ddf572447e6022105
+    digest: 1140a7ca2149e6ba41dc6c7b556e51dd2ec8b9f1b43683ad262fdd76f063e992
     maintainers:
     - email: artur@opsguru.io
       name: artur-bolt
@@ -36,9 +36,9 @@ entries:
   spark-history-server:
   - apiVersion: v1
     appVersion: 2.4.0
-    created: "2023-03-10T14:22:49.979711507Z"
+    created: "2023-03-13T11:23:57.697959735Z"
     description: A Helm chart for Spark History Server
-    digest: 313f45709246d03f458f9b6bd01b2434c2e0bdfc364c9a9dcebe205aa55a1035
+    digest: 7342e9b56d7d3ba84b34170aa817c2744737fff68680fed4a34dac15a3ec881e
     home: https://spark.apache.org
     keywords:
     - spark
@@ -56,9 +56,9 @@ entries:
   spark-operator:
   - apiVersion: v2
     appVersion: v1beta2-1.3.8-3.1.1
-    created: "2023-03-10T14:22:49.982047227Z"
+    created: "2023-03-13T11:23:57.699962473Z"
     description: A Helm chart for Spark on Kubernetes operator
-    digest: 682b5d33e8e26ed459ee63b54cd0a52857c76f2cf9ee7b30ed33a2316ee29456
+    digest: c55def3d7b6a28e8bf090b2f504a151912a36197ad1d963e834aa51fef167967
     home: https://github.com/GoogleCloudPlatform/spark-on-k8s-operator
     keywords:
     - spark
@@ -71,4 +71,4 @@ entries:
     urls:
     - spark-operator-1.1.26-og-0.0.1.tgz
     version: 1.1.26-og-0.0.1
-generated: "2023-03-10T14:22:49.977140584Z"
+generated: "2023-03-13T11:23:57.693968358Z"
